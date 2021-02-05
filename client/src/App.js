@@ -1,10 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
-import Nav from "./components/Navbar";
-
+import Home from "./pages/home.js"
+import MyProjects from "./pages/myProjects.js"
 function App() {
   return (
-    <Nav/>
+    <div>
+    <Home/>
+    </div>
   );
 }
 
