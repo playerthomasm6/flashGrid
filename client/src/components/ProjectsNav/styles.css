@@ -1,3 +1,25 @@
 .project-bar {
-    
+    border: solid;
+    border-color: black;
+    min-height: 500px;
+}
+
+.heading {
+    background-color: aqua;
+    border: solid;
+    border-color: black;
+
+}
+
+.highlight {
+    background-color: coral;
+}
+
+p {
+    font-size: 8px;
+}
+
+p:hover {
+    transition: font-size .25s;
+    font-size: 15px;
 }
