@@ -16,6 +16,10 @@ function App() {
             <Route exact path={"/projects"}>
             <MyProjects/>
             </Route>
+
+            <Route exact path={"/about"}>
+            <MyProjects/>
+            </Route>
         </Switch>
        
       </div>

@@ -13,13 +13,13 @@ function Nav() {
                     </div>
 
                     <div className="col">
-                        <a className="navbar-brand" href="/">
+                        <a className="navbar-brand" href="/about">
                             About
                         </a>
                     </div>
 
                     <div className="col">
-                        <a className="navbar-brand" href="/">
+                        <a className="navbar-brand" href="/projects">
                             My Projects
                         </a>
                     </div>
