@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Nav from "../components/Navbar";
-import HelloFlashGrid from "../components/HelloFlashGrid";
+import ProjectsNav from "../components/ProjectsNav";
 
 function MyProjects() {
     
@@ -8,7 +8,7 @@ function MyProjects() {
         <div>
             <h1>This is projects!!!!!!!</h1>
             <Nav />
-            <HelloFlashGrid />
+            <ProjectsNav />
         </div>
 
     );
