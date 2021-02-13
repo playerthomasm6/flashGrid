@@ -1,5 +1,8 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 import React, { Component, createContext } from "react";
-import { auth } from "../firebase";
+import { auth, generateUserDocument } from "../utils/firebase";
+
 
 export const UserContext = createContext({ user: null });
 class UserProvider extends Component {
@@ -7,12 +10,16 @@ class UserProvider extends Component {
     user: null
   };
 
-  componentDidMount = () => {
-    auth.onAuthStateChanged(userAuth => {
-      this.setState({ user: userAuth});
+  componentDidMount = async () => {
+    auth.onAuthStateChanged(async userAuth => {
+      const user = await generateUserDocument(userAuth);
+      this.setState({ user });
     });
   };
+ 
   render() {
+
+    const { user } = this.state;
     return (
       <UserContext.Provider value={this.state.user}>
         {this.props.children}

@@ -1,0 +1,11 @@
+.padding {
+    padding: 1%;
+    
+}
+
+.light-border {
+    border: solid;
+    border-color: rgba(21, 24, 211, 0.068);
+    border-width: 5px;
+    margin:2%!important;
+}

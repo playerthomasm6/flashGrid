@@ -1,13 +1,36 @@
 import React from "react";
-import Application from "./Components/Application";
-import UserProvider from "./providers/UserProvider";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
+import Home from "./pages/home.js"
+import MyProjects from "./pages/myProjects.js";
+import Application from "./pages/Application";
+import UserProvider from "./providers/UserProvider";
 
 function App() {
   return (
-    <UserProvider>
+    
+    <Router>
+      <UserProvider>
       <Application />
     </UserProvider>
+      <div>
+        <Switch>
+          <Route exact path={"/"}>
+            <Home/>
+            </Route>
+
+            <Route exact path={"/projects"}>
+            <MyProjects/>
+            </Route>
+
+            <Route exact path={"/about"}>
+            <MyProjects/>
+            </Route>
+        </Switch>
+       
+      </div>
+    </Router>
+
   );
 }
 
