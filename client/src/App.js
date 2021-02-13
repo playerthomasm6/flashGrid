@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import Home from "./pages/home.js"
 import MyProjects from "./pages/myProjects.js"
+import About from "./pages/about"
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
             </Route>
 
             <Route exact path={"/about"}>
-            <MyProjects/>
+            <About/>
             </Route>
         </Switch>
        
