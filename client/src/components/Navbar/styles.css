@@ -1,0 +1,21 @@
+.navbar {
+    padding: 0!important
+}
+
+.nav-color {
+    background-color: #004E89;
+}
+
+.navcol {
+    padding-left: 30px!important;
+    padding-top: 7px!important;
+    padding-bottom: 5px!important;
+}
+
+.navcol:hover {
+    background-color: rgb(60, 128, 255);
+}
+
+/* .navbar-dark .navbar-brand:hover {
+    color: green!important;
+} */
