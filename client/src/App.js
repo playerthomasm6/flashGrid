@@ -3,11 +3,16 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import Home from "./pages/home.js"
 import MyProjects from "./pages/myProjects.js";
+import Application from "./pages/Application";
+import UserProvider from "./providers/UserProvider";
 
 function App() {
   return (
     
     <Router>
+      <UserProvider>
+      <Application />
+    </UserProvider>
       <div>
         <Switch>
           <Route exact path={"/"}>
