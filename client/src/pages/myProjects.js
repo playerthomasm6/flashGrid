@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Nav from "../components/Navbar";
 import HelloFlashGrid from "../components/HelloFlashGrid";
+import ProjectsContainer from "../components/ProjectsContainer";
+import TasksContainer from "../components/TasksContainer";
 
 function MyProjects() {
     
     return (
         <div>
-            <h1>This is projects!!!!!!!</h1>
             <Nav />
-            <HelloFlashGrid />
+            <ProjectsContainer/>
         </div>
 
     );
