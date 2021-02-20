@@ -15,19 +15,24 @@ function ProjectsContainer() {
 
     const data = [
         {
-            name: "Flash Grid",
+            userName: "playerthomasm6@gmail.com",
+            projectName: "Flash Grid",
             description: "Flash Grid is a project management web app to help organize tasks and personel",
-            tasks: [
-
-                {
-                    name: "Assign tasks",
-                    description: "Assign tasks to each team member",
-                    personel: "Thomas",
-                    dueDate: "02/11/2021",
-                    complete: false
-                }
-
-            ]
+            taskName: "Assign tasks",
+            taskDescription: "Assign tasks to each team member",
+            taskPersonel: "Thomas",
+            taskDueDate: "02/11/2021",
+            taskComplete: false
+        },
+        {
+            userName: "playerthomasm6@gmail.com",
+            projectName: "Flash Grid",
+            description: "Flash Grid is a project management web app to help organize tasks and personel",
+            taskName: "Create Project Page",
+            taskDescription: "write code for project page",
+            taskPersonel: "Thomas",
+            taskDueDate: "02/11/2021",
+            taskComplete: false
         },
 
 
