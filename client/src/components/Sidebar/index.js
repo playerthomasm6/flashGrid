@@ -1,11 +1,13 @@
 import React from "react";
 import "./styles.css"
 import AccountBar from '../AccountBar'
+import SignIn from "../SignIn/SignIn";
 
 function Sidebar() {
     return (
         <div>
          <AccountBar/>
+         <SignIn/>
          <div className="row padding light-border">
                     <div className="col padding">
                         <h6>This is a title of a thing</h6>
