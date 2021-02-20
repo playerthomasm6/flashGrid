@@ -5,6 +5,7 @@ import Home from "./pages/home.js"
 import MyProjects from "./pages/myProjects.js";
 import Application from "./pages/Application";
 import UserProvider from "./providers/UserProvider";
+import About from "./pages/about";
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
             </Route>
 
             <Route exact path={"/about"}>
-            <MyProjects/>
+            <About/>
             </Route>
         </Switch>
        
