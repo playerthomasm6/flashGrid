@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import Nav from "../components/Navbar";
 // eslint-disable-next-line no-unused-vars
 //import HelloFlashGrid from "../components/HelloFlashGrid";
-import projects from "../projects.js"
+// import projects from "../projects.js"
+import ProjectsContainer from "../components/ProjectsContainer";
 
 function MyProjects() {
     
@@ -11,20 +12,7 @@ function MyProjects() {
         <div>
             <h1>This is projects!!!!!!!</h1>
             <Nav />
-            <div className>
-                    <p>
-                        {projects.projectName}
-                    </p>
-                    <p>
-                        {projects.description}
-                    </p>
-                    <p>
-                        {projects.synopsis}
-                    </p>
-                    <p>
-                        {projects.date}
-                    </p>
-                </div>
+            <ProjectsContainer/>
         
 
         </div>
