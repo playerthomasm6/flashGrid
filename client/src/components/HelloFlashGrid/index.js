@@ -10,9 +10,6 @@ function HelloFlashGrid() {
             <div className="row">
                 <div className="col-sm-3 side-bar padding">
                   <Sidebar/>
-                  <Sidebar/>
-                  <Sidebar/>
-                  <Sidebar/>
                 </div>
 
                 <div className="col-sm-6">
