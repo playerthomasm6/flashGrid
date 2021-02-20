@@ -5,7 +5,7 @@ import Home from "./pages/home.js"
 import MyProjects from "./pages/myProjects.js";
 import Application from "./pages/Application";
 import UserProvider from "./providers/UserProvider";
-import About from "./pages/about";
+import About from "./pages/about"
 
 function App() {
   return (
