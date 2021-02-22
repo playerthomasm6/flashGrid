@@ -10,7 +10,6 @@ function MyProjects() {
     
     return (
         <div>
-            <h1>This is projects!!!!!!!</h1>
             <Nav />
             <ProjectsContainer/>
         

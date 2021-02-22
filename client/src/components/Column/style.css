@@ -1,0 +1,9 @@
+.font-item {
+    font-size: 12px;
+}
+
+.pointer:hover {
+    cursor: pointer;
+    border: solid black 3px;
+    padding: 2px;
+}
