@@ -7,3 +7,7 @@
     border: solid black 3px;
     padding: 2px;
 }
+
+.project-list {
+    width: 50%;
+}

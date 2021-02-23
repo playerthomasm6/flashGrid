@@ -141,40 +141,39 @@ function ProjectsContainer() {
     return (
         <div className="container-fluid space-out">
             <h6>Current User: {user.userName}</h6>
+
             <div className="row">
-                <Column>
+                <div className="col-sm-2">
                 <h5>Projects</h5>
-                </Column>
-
-                <div className="row">
-                <Column>
-                <h5>Tasks</h5>
-                </Column>
-                
-                <Column>
-                <h5>Description</h5>
-                </Column>
-
-                <Column>
-                <h5>Assigned Personel</h5>
-                </Column>
-
-                <Column>
-                <h5>Due Date</h5>
-                </Column>
-
-                <Column>
-
-                </Column>
                 </div>
+            
+                <div className="col-sm-2">
+                <h5>Tasks</h5>
+                </div>
+                
+                <div className="col-sm-2">
+                <h5>Description</h5>
+                </div>
+
+                <div className="col-sm-2">
+                <h5>Assigned Personel</h5>
+                </div>
+
+                <div className="col-sm-2">
+                <h5>Due Date</h5>
+                </div>
+
+                <div className="col-sm-2">
+                <h5>Due Date</h5>
+                </div>
+                
                 
             </div>
 
             <div className="row">
-                <Column>
-                    
-                    
-                    {projectNameList.map(item => (
+
+                <div classname="col-sm-2">
+                {projectNameList.map(item => (
                         <p className="pointer"
                         key={item + "1"}
                         value={item}
@@ -183,39 +182,41 @@ function ProjectsContainer() {
                         >{item}</p>
                         
                     ))}
-
+                </div>
                 
-                </Column>
-                <div className="col">
                      {currentProject.map(item => (
-                        <div className="row">
-                            
-                            <Column>
+                         <div>
+                            <div className="col-sm-2">
                             <p>{item.taskName}</p>
-                            </Column>
+                            </div>
 
                             
-                            <Column>
+                            <div className="col-sm-2">
                             <p> {item.taskDescription}</p>
-                            </Column>
+                            </div>
                         
 
-                            <Column>
+                            <div className="col-sm-2">
                             <p>{item.taskAssigne}</p>
-                            </Column>
+                            </div>
                             
                             
-                            <Column>
+                            <div className="col-sm-2">
                             <p>{item.taskDueDate}</p>
-                            </Column>
+                            </div>
 
+                            <div className="col-sm-2">
+                            <p>{item.taskDueDate}</p>
+                            </div>  
                         </div>
+                         
                     ))} 
             
-                </div>
+                
             </div>
 
         </div>
+        
     );
 }
 
