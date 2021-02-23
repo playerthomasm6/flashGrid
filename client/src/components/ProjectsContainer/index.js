@@ -8,13 +8,21 @@ function ProjectsContainer() {
     const [projectNameList, setProjectNameList] = useState([]); 
     const [projects, setProjects] = useState([]);
     const [currentProject, setCurrentProject] = useState([]);
+    const [test, setTest] = useState({});
     
     useEffect(() => {
         // This will not be hard coded once the log in system is up and running.
         setProjects(data);
-        console.log(data);
+        loadProjects();
+            // .catch(err => console.log(err)));
+        console.log(test);
         // renderProjects();
     }, []);
+
+    useEffect(() => {
+        console.log(test);
+        
+    }, [test]);
 
     
     function findProject(e, item) {
@@ -127,6 +135,13 @@ function ProjectsContainer() {
         },
     ];
 
+   const loadProjects = () => {
+        API.getProjects()
+        .then(res => 
+            setProjects(res.data));
+    }
+    
+
  
 
    function handleNow (event) {
@@ -172,7 +187,7 @@ function ProjectsContainer() {
 
             <div className="row">
 
-                <div classname="col-sm-2">
+                <div className="col-sm-2">
                 {projectNameList.map(item => (
                         <p className="pointer"
                         key={item + "1"}
