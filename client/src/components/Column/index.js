@@ -4,9 +4,9 @@ import "./style.css";
 function Column({children}) {
 
     return (
-        <div className="col-sm">
+        <div className="col-sm font-item">
             <div className="row">
-                <div className="col">
+                <div className="col-sm">
                     <ul>
                         {children}
                     </ul>
