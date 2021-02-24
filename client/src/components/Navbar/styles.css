@@ -1,3 +1,18 @@
 .nav-color {
     background-color: #004E89;
 }
+
+img{
+    max-width: 300px;
+    height: 75px;
+}
+
+#inner_main_menu {margin: 0 auto; width: 1170px;}
+#inner_main_menu ul{margin: 0; padding: 10px 0 0; list-style: none; text-align: right;}
+#inner_main_menu ul li{float: none; display: inline block;}
+#inner_main_menu ul li:nth-child(1){float: left}
+#inner_main_menu ul li:nth-child(2){float: left}
+#inner_main_menu ul li a{color:white; font-size: 20px; text-transform: uppercase; text-decoration: none; display: block; padding: 10px 20px;} 
+#inner_main_menu ul li a:hover{color: rgb(87, 114, 201);} 
+#main_menu{width: 100%; position: relative}
+.logo_area{width: 50px; height: 50px; position:absolute; left: 50%; top: 0; content: ""; margin-left: -150px; text-align: center;}

@@ -2,10 +2,15 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const taskSchema = new Schema({
+  userName: String,
   projectName: { type: String, required: true },
-  description: { type: String, required: true },
-  synopsis: String,
-  date: { type: Date, default: Date.now }
+  projectDescription: { type: String, required: true },
+  taskName: String,
+  taskDescription: String,
+  taskAssigne: String,
+  taskDueDate: { type: Date, default: Date.now },
+  taskComplete: false
+
 });
 
 const Task = mongoose.model("task", taskSchema);
