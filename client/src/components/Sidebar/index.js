@@ -5,9 +5,13 @@ import SignIn from "../SignIn/SignIn";
 
 function Sidebar() {
     return (
-        <div>
-         <AccountBar/>
+        <div className='whole'>
          <SignIn/>
+         {/* <AccountBar/> */}
+         <br></br>
+         <br></br>
+
+         <div id='adPic'></div>
          <div className="row padding light-border">
                     <div className="col padding">
                         <h6>This is a title of a thing</h6>

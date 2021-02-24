@@ -3,8 +3,7 @@ import './styles.css'
 
 const index = () => {
     return (
-        <div>
-            <div className='container'>
+            <div className='container accountInfo'>
                 <div className='row'>
                     <div className='col-4'>
                         <img src='https://i.picsum.photos/id/602/200/300.jpg?hmac=TkzlF12MtJomcmqzsOc-CR43gSl3xnotDQRPBvM7Avw' id='profilePic' alt='example' width='60' height='60'></img>
@@ -14,11 +13,10 @@ const index = () => {
                         <h4>Username</h4>
                     </div>
                 </div>
+                <br></br>
+            <br></br>
+            <br></br>
             </div>
-            <br></br>
-            <br></br>
-            <br></br>
-        </div>
     )
 }
 
