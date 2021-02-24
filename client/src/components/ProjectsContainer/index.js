@@ -192,7 +192,7 @@ function ProjectsContainer() {
                         <p className="pointer"
                         key={item + "1"}
                         value={item}
-                        name={item.userName}
+                        // name={item.userName}
                         onClick={(event) => findProject(event, item)}
                         >{item}</p>
                         
