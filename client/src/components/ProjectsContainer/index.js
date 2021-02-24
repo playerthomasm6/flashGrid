@@ -142,7 +142,16 @@ function ProjectsContainer() {
     }
     
 
- 
+    // function handleInputChange(event) {
+    //     const { name, value } = event.target;
+    //     setFormObject({...formObject, [name]: value})
+    //   };
+
+      function deleteThatTask(id) {
+        API.deleteTask(id)
+          .then(res => loadProjects())
+          .catch(err => console.log(err));
+      }
 
    function handleNow (event) {
     const value = event.target.getAttribute("value");
@@ -201,8 +210,19 @@ function ProjectsContainer() {
                 
                      {currentProject.map(item => (
                          <div>
-                            <div className="col-sm-2">
-                            <p>{item.taskName}</p>
+                            <div className="col-sm-2"
+                            key={item._id}
+                            id={item._id}
+                            >
+                            <textarea
+                            key={item.id}
+                            id={item.id}
+                            name="taskName"
+                            >{item.taskName}</textarea>
+                            {/* <button
+                            onClick={(e) => saveItem}>Save</button> */}
+                            <button
+                            onClick={() => deleteThatTask(item._id)}>X</button>
                             </div>
 
                             
