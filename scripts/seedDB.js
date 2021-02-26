@@ -25,6 +25,26 @@ const taskSeed = [
     taskComplete: false
 },
 {
+  userName: "playerthomasm6@gmail.com",
+  projectName: "Flash Grid",
+  projectDescription: "Flash Grid is a project management web app to help organize tasks and personel",
+  taskName: "Make Table",
+  taskDescription: "Make A table",
+  taskAssigne: "Mathew",
+  taskDueDate: "02/28/2021",
+  taskComplete: false
+},
+{
+  userName: "playerthomasm6@gmail.com",
+  projectName: "Flash Grid",
+  projectDescription: "Flash Grid is a project management web app to help organize tasks and personel",
+  taskName: "Draw A Picture",
+  taskDescription: "Draw a pretty picture",
+  taskAssigne: "Griffin",
+  taskDueDate: "02/28/2021",
+  taskComplete: false
+},
+{
 userName: "playerthomasm6@gmail.com",
 projectName: "Good stuff fund",
 projectDescription: "Create a fund for under privliged kids",
