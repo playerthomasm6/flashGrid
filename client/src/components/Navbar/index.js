@@ -10,10 +10,10 @@ function Nav() {
                 </div>
                 <div className="row" id="inner_main_menu">
                     <ul>
-                        <li><a href="">Home</a></li>
-                        <li><a href="">About</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About</a></li>
                         <li><a href="">Log In</a></li>
-                        <li><a href="">My Projects</a></li>
+                        <li><a href="/projects">My Projects</a></li>
                     </ul>
                 </div>
 
