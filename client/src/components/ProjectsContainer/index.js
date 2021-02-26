@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
 import Column from "../Column";
-import API from "../../utils/API"
+import API from "../../utils/API";
+import RenderForm from "../RenderForm";
+import TaskFormButton from "../TaskFormButton";
+
 
 function ProjectsContainer() {
     const [user, setUser] = useState({})
@@ -9,20 +12,22 @@ function ProjectsContainer() {
     const [projects, setProjects] = useState([]);
     const [currentProject, setCurrentProject] = useState([]);
     const [test, setTest] = useState({});
+    const [taskForm, setTaskForm] = useState();
+    const [taskFormBoolean, setTaskFormBoolean] = useState(false);
 
     useEffect(() => {
         // This will not be hard coded once the log in system is up and running.
         setProjects(data);
         loadProjects();
+        formTime();
         // .catch(err => console.log(err)));
-        console.log(test);
         // renderProjects();
     }, []);
 
     useEffect(() => {
-        console.log(test);
+        formTime();
 
-    }, [test]);
+    }, [taskFormBoolean]);
 
 
     function findProject(e, item) {
@@ -146,8 +151,8 @@ function ProjectsContainer() {
     //     const { name, value } = event.target;
     //     setFormObject({...formObject, [name]: value})
     //   };
-    
-    
+
+
     // DELETE TASK
     // ==========================
     function deleteThatTask(id) {
@@ -157,11 +162,14 @@ function ProjectsContainer() {
             .catch(err => console.log(err));
     }
 
+    
+
     // CREATE TASK
     // ==========================
      function createNewTask() {
+                                console.log(currentProject)
          const task= {
-            userName: "playerthomasm6@gmail.com",
+                                userName: "playerthomasm6@gmail.com",
             projectName: "Flash Grid",
             projectDescription: "Flash Grid is a project management web app to help organize tasks and personel",
             taskName: "Make Table",
@@ -180,98 +188,118 @@ function ProjectsContainer() {
         const name = event.target.getAttribute("name");
 
         console.log(value + name)
-        setCurrentProject({ currentProject: value });
+        setCurrentProject({currentProject: value });
         console.log(currentProject)
     }
 
+    const loadTaskForm = () => {
+        console.log("it worked")
+       setTaskFormBoolean(true)
+    }
+
+    const formTime = () => {
+    if (taskFormBoolean) {
+        setTaskForm(<RenderForm/>)
+    } else {
+        setTaskForm(<TaskFormButton
+       loadTaskForm ={() => loadTaskForm()}
+        />)
+    }
+}
+
+
+
     return (
         <div className="container-fluid space-out">
-            <h6>Current User: {user.userName}</h6>
+                                <h6>Current User: {user.userName}</h6>
 
-            <div className="row">
-
-
-            </div>
-
-            <div className="row">
-
-                <div className="col-sm-2">
-                    <table className="table striped bordered hover">
-                        <thread>
-                            <tr>
-                                <th>Projects</th>
-                            </tr>
-                        </thread>
-                        <tbody>
-                        {projectNameList.map(item => (
-                            <tr>
-                        <td className="pointer"
-                            key={item}
-                            value={item}
-                            name={item.userName}
-                            onClick={(event) => findProject(event, item)}
-                        >{item}</td>
-                            </tr>
-                    ))}
-
-                        </tbody>
-                   
-
-                </table>
-                </div>
-                
-                
-                <div className="col-sm-10">
-                <table class="table striped bordered hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">Tasks</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Assigned Personel</th>
-                            <th scope="col">Due Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        {currentProject.map(item => (
-                            <tr>
-                                <td
-                                    key={item._id}
-                                    id={item._id}
-                                    name="taskName" >
-                                    {item.taskName}
-                                    <button 
-                                    value={item._id}
-                                    onClick={(e) => deleteThatTask(e.target.value)}>X</button>
-                                    
-                                </td>
-
-                                <td> {item.taskDescription}</td>
-
-                                <td>{item.taskAssigne}</td>
-
-                                <td>{item.taskDueDate}</td>
-
-                            </tr>
-                        ))}
-                        <tr>
-                            <td>
-                                <button
-                                 onClick={() => createNewTask()}
-                                >Create New Task</button>
-                            </td>
-                        </tr>
-
-                    </tbody>
-                </table>
-                </div>
+                                <div className="row">
 
 
+                                </div>
+
+                                <div className="row">
+
+                                    <div className="col-sm-2">
+                                        <table className="table striped bordered hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Projects</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {projectNameList.map(item => (
+                                                    <tr>
+                                                        <td className="pointer"
+                                                            key={item}
+                                                            value={item}
+                                                            name={item.userName}
+                                                            onClick={(event) => findProject(event, item)}
+                                                        >{item}</td>
+                                                    </tr>
+                                                ))}
+
+                                            </tbody>
 
 
-            </div>
+                                        </table>
+                                    </div>
 
-        </div>
+
+                                    <div className="col-sm-10">
+                                        <table class="table striped bordered hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Tasks</th>
+                                                    <th scope="col">Description</th>
+                                                    <th scope="col">Assigned Personel</th>
+                                                    <th scope="col">Due Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                {currentProject.map(item => (
+                                                    <tr>
+                                                        <td
+                                                            key={item._id}
+                                                            id={item._id}
+                                                            name="taskName" >
+                                                            {item.taskName}
+                                                            <button
+                                                                value={item._id}
+                                                                onClick={(e) => deleteThatTask(e.target.value)}>X</button>
+
+                                                        </td>
+
+                                                        <td key={item.taskDescription}> {item.taskDescription}</td>
+
+                                                        <td key={item.taskAssigne}>{item.taskAssigne}</td>
+
+                                                        <td key={item.taskDueDate}>{item.taskDueDate}</td>
+
+                                                    </tr>
+                                                ))}
+                                                <tr>
+                                                    <td>
+                                                        <button
+                                                            onClick={() => createNewTask()}
+                                                        >Create New Task for</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                                    <div>
+                                                    {taskForm}
+                                                    </div>
+                                            
+                                    </div>
+
+
+
+
+                                </div>
+
+                            </div>
 
     );
 }
