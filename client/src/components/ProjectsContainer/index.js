@@ -14,20 +14,26 @@ function ProjectsContainer() {
     const [test, setTest] = useState({});
     const [taskForm, setTaskForm] = useState();
     const [taskFormBoolean, setTaskFormBoolean] = useState(false);
+    const [formState, setFormState] = useState({taskName: "a", taskDescription: "b"});
 
     useEffect(() => {
         // This will not be hard coded once the log in system is up and running.
         setProjects(data);
         loadProjects();
-        formTime();
+        //formTime();
         // .catch(err => console.log(err)));
         // renderProjects();
     }, []);
 
-    useEffect(() => {
+   /* useEffect(() => {
         formTime();
 
-    }, [taskFormBoolean]);
+    }, [taskFormBoolean]);*/
+
+    // useEffect(() => {
+    //     console.log(formState)
+
+    // }, [formState]);
 
 
     function findProject(e, item) {
@@ -197,13 +203,35 @@ function ProjectsContainer() {
        setTaskFormBoolean(true)
     }
 
-    const formTime = () => {
+    const submitNewTask = (e) => {
+        e.preventDefault();
+        console.log("it worked");
+        const taskName = e.target.getAttribute("form-control").getNamedItem("task-name");
+        console.log(taskName.value)
+
+        
+        // API.saveTask()
+        // .then(res => loadProjects())
+        //    .catch(err => console.log(err));
+    }
+
+    function handleFormInput (event) {
+        const {name, value} = event.target
+        
+        setFormState({...formState, [name] : value})
+    } 
+
+    const getForm = () => {
     if (taskFormBoolean) {
-        setTaskForm(<RenderForm/>)
+        return <RenderForm
+        formState={formState}
+        submitNewTask={(e) => submitNewTask(e)}
+        handleFormInput ={(e) => handleFormInput(e)}
+        />
     } else {
-        setTaskForm(<TaskFormButton
+        return <TaskFormButton
        loadTaskForm ={() => loadTaskForm()}
-        />)
+        />
     }
 }
 
@@ -289,7 +317,7 @@ function ProjectsContainer() {
                                             </tbody>
                                         </table>
                                                     <div>
-                                                    {taskForm}
+                                                    {getForm()}
                                                     </div>
                                             
                                     </div>
