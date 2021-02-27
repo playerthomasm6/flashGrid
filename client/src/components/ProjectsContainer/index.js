@@ -3,14 +3,19 @@ import "./style.css";
 import Column from "../Column";
 import API from "../../utils/API";
 import ModalForm from "../Modal";
+import RenderForm from "../RenderForm";
+import TaskFormButton from "../TaskFormButton";
+
 
 function ProjectsContainer(props) {
-  console.log(props);
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({})
   const [projectNameList, setProjectNameList] = useState([]);
   const [projects, setProjects] = useState([]);
   const [currentProject, setCurrentProject] = useState([]);
   const [test, setTest] = useState({});
+  const [taskForm, setTaskForm] = useState();
+  const [taskFormBoolean, setTaskFormBoolean] = useState(false);
+  const [formState, setFormState] = useState({});
 
   useEffect(() => {
     // This will not be hard coded once the log in system is up and running.
@@ -26,21 +31,21 @@ function ProjectsContainer(props) {
   }, [test]);
 
   function findProject(e, item) {
-    const foundProject = projects.filter(
-      project => item === project.projectName
-    );
-    setCurrentProject(foundProject);
-    console.log(user.userName);
-    console.log(currentProject.userName);
+    const foundProject = projects.filter(project => item === project.projectName)
+    setCurrentProject(foundProject)
+
   }
+
   // sets the project name list when the projects changes
   useEffect(() => {
     const NameList = projects.map(item => {
-      return item.projectName;
+      return (
+        item.projectName
+      )
     });
-    setUser({ userName: "playerthomasm6@gmail.com" });
+    setUser({ userName: "playerthomasm6@gmail.com" })
     setProjectNameList([...new Set(NameList)]);
-  }, [projects]);
+  }, [projects])
 
   const data = [
     {
@@ -158,24 +163,32 @@ function ProjectsContainer(props) {
   function deleteThatTask(id) {
     console.log(id);
     API.deleteTask(id)
-      .then(res => loadProjects())
+      .then(res => {
+        console.log('fire1')
+        loadProjects()
+      })
+      .then(() => {
+        console.log('fire2')
+        console.log(currentProject[0].projectName)
+        findProject("bullshit", currentProject[0].projectName)
+      })
       .catch(err => console.log(err));
   }
 
   // CREATE TASK
   // ==========================
   function createNewTask() {
+    console.log(currentProject)
     const task = {
-      userName: "playerthomasm6@gmail.com",
-      projectName: "Flash Grid",
-      projectDescription:
-        "Flash Grid is a project management web app to help organize tasks and personel",
-      taskName: "Make Table",
-      taskDescription: "Make A table",
-      taskAssigne: "Mathew",
-      taskDueDate: "02/28/2021",
+      userName: currentProject[0].userName,
+      projectName: currentProject[0].projectName,
+      projectDescription: currentProject[0].projectDescription,
+      taskName: formState.userName,
+      taskDescription: formState.taskDescription,
+      taskAssigne: formState.taskAssigne,
+      taskDueDate: formState.taskDueDate,
       taskComplete: false
-    };
+    }
     API.saveTask(task)
       .then(res => loadProjects())
       .catch(err => console.log(err));
@@ -189,13 +202,62 @@ function ProjectsContainer(props) {
     setCurrentProject({ currentProject: value });
     console.log(currentProject);
   }
+
   const [show, setShow] = useState(false);
   const [editData, setEditData] = useState({});
   const handleClose = () => setShow(false);
   const handleEditBtn = eData => {
-        setShow(true);
-        setEditData(eData);
+    setShow(true);
+    setEditData(eData);
   };
+
+  const loadTaskForm = () => {
+    console.log("it worked")
+    setTaskFormBoolean(true)
+  }
+
+  const submitNewTask = (e) => {
+    e.preventDefault();
+    console.log("New Task Created");
+
+    console.log(formState)
+
+    const task = {
+      userName: currentProject[0].userName,
+      projectName: currentProject[0].projectName,
+      projectDescription: currentProject[0].projectDescription,
+      taskName: formState.taskName,
+      taskDescription: formState.taskDescription,
+      taskAssigne: formState.taskAssigne,
+      taskDueDate: formState.taskDueDate,
+      taskComplete: false
+    }
+    API.saveTask(task)
+      .then(res => loadProjects())
+      .then(() => setTaskFormBoolean(false))
+      .then(() => setFormState({}))
+      .catch(err => console.log(err));
+  }
+
+  function handleFormInput(event) {
+    const { name, value } = event.target
+
+    setFormState({ ...formState, [name]: value })
+  }
+
+  const getForm = () => {
+    if (taskFormBoolean) {
+      return <RenderForm
+        formState={formState}
+        submitNewTask={(e) => submitNewTask(e)}
+        handleFormInput={(e) => handleFormInput(e)}
+      />
+    } else {
+      return <TaskFormButton
+        loadTaskForm={() => loadTaskForm()}
+      />
+    }
+  }
 
   return (
     <>
@@ -232,8 +294,12 @@ function ProjectsContainer(props) {
               </thead>
               <tbody>
                 {currentProject.map(item => (
-                  <tr>
-                    <td key={item._id} id={item._id} name="taskName">
+                  <tr
+                  key={item._id}
+                  >
+                    <td 
+                    id={item._id} 
+                    name="taskName">
                       {item.taskName}
                       <button
                         value={item._id}
@@ -253,15 +319,11 @@ function ProjectsContainer(props) {
                     </td>
                   </tr>
                 ))}
-                <tr>
-                  <td>
-                    <button onClick={() => createNewTask()}>
-                      Create New Task
-                    </button>
-                  </td>
-                </tr>
               </tbody>
             </table>
+            <div>
+              {getForm()}
+            </div>
           </div>
         </div>
       </div>
