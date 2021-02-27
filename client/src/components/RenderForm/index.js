@@ -23,12 +23,14 @@ function RenderForm (props) {
                     <div className="form-group">
                         <label htmlFor="task-assigne">Who will complete the task?</label>
                         <input type="text" className="form-control" id="task-assigne" name="taskAssigne" placeholder="Assigne..."
+                        value={props.formState.taskAssigne}
                         onChange={(e) => props.handleFormInput(e)}
                         ></input>
                     </div>
                     <div className="form-group">
                         <label htmlFor="task-due-date">When is this task due?</label>
                         <input type="text" className="form-control" id="task-due-date" name="taskDueDate" placeholder="Due Date..."
+                        value={props.formState.taskDueDate}
                         onChange={(e) => props.handleFormInput(e)}></input>
                     </div>
                         

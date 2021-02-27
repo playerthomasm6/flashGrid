@@ -14,7 +14,7 @@ function ProjectsContainer() {
     const [test, setTest] = useState({});
     const [taskForm, setTaskForm] = useState();
     const [taskFormBoolean, setTaskFormBoolean] = useState(false);
-    const [formState, setFormState] = useState({taskName: "a", taskDescription: "b"});
+    const [formState, setFormState] = useState({});
 
     useEffect(() => {
         // This will not be hard coded once the log in system is up and running.
@@ -25,22 +25,10 @@ function ProjectsContainer() {
         // renderProjects();
     }, []);
 
-   /* useEffect(() => {
-        formTime();
-
-    }, [taskFormBoolean]);*/
-
-    // useEffect(() => {
-    //     console.log(formState)
-
-    // }, [formState]);
-
-
     function findProject(e, item) {
         const foundProject = projects.filter(project => item === project.projectName)
         setCurrentProject(foundProject)
-        console.log(user.userName)
-        console.log(currentProject.userName)
+        
     }
     // sets the project name list when the projects changes
     useEffect(() => {
@@ -165,6 +153,7 @@ function ProjectsContainer() {
         console.log(id);
         API.deleteTask(id)
             .then(res => loadProjects())
+            .then(() => findProject("bullshit", currentProject[0].projectName))
             .catch(err => console.log(err));
     }
 
@@ -175,13 +164,13 @@ function ProjectsContainer() {
      function createNewTask() {
                                 console.log(currentProject)
          const task= {
-                                userName: "playerthomasm6@gmail.com",
-            projectName: "Flash Grid",
-            projectDescription: "Flash Grid is a project management web app to help organize tasks and personel",
-            taskName: "Make Table",
-            taskDescription: "Make A table",
-            taskAssigne: "Mathew",
-            taskDueDate: "02/28/2021",
+            userName: currentProject[0].userName,
+            projectName: currentProject[0].projectName,
+            projectDescription: currentProject[0].projectDescription,
+            taskName: formState.userName,
+            taskDescription: formState.taskDescription,
+            taskAssigne: formState.taskAssigne,
+            taskDueDate: formState.taskDueDate,
             taskComplete: false
          }
          API.saveTask(task)
@@ -205,9 +194,9 @@ function ProjectsContainer() {
 
     const submitNewTask = (e) => {
         e.preventDefault();
-        console.log("it worked");
-        const taskName = e.target.getAttribute("form-control").getNamedItem("task-name");
-        console.log(taskName.value)
+        console.log("New Task Created");
+       
+        console.log(formState)
 
         
         // API.saveTask()
@@ -307,13 +296,7 @@ function ProjectsContainer() {
 
                                                     </tr>
                                                 ))}
-                                                <tr>
-                                                    <td>
-                                                        <button
-                                                            onClick={() => createNewTask()}
-                                                        >Create New Task for</button>
-                                                    </td>
-                                                </tr>
+                                                
                                             </tbody>
                                         </table>
                                                     <div>
