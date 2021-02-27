@@ -152,8 +152,15 @@ function ProjectsContainer() {
     function deleteThatTask(id) {
         console.log(id);
         API.deleteTask(id)
-            .then(res => loadProjects())
-            .then(() => findProject("bullshit", currentProject[0].projectName))
+            .then(res => {
+                console.log('fire1')
+                loadProjects()
+            })
+            .then(() => {
+                console.log('fire2')
+                console.log(currentProject[0].projectName)
+                findProject("bullshit", currentProject[0].projectName)
+            })
             .catch(err => console.log(err));
     }
 
@@ -198,10 +205,21 @@ function ProjectsContainer() {
        
         console.log(formState)
 
-        
-        // API.saveTask()
-        // .then(res => loadProjects())
-        //    .catch(err => console.log(err));
+        const task= {
+            userName: currentProject[0].userName,
+            projectName: currentProject[0].projectName,
+            projectDescription: currentProject[0].projectDescription,
+            taskName: formState.taskName,
+            taskDescription: formState.taskDescription,
+            taskAssigne: formState.taskAssigne,
+            taskDueDate: formState.taskDueDate,
+            taskComplete: false
+         }
+         API.saveTask(task)
+         .then(res => loadProjects())
+         .then(() => setTaskFormBoolean(false))
+         .then(() => setFormState({}))
+            .catch(err => console.log(err));
     }
 
     function handleFormInput (event) {
@@ -276,7 +294,9 @@ function ProjectsContainer() {
                                             <tbody>
 
                                                 {currentProject.map(item => (
-                                                    <tr>
+                                                    <tr
+                                                    key={item._id}
+                                                    >
                                                         <td
                                                             key={item._id}
                                                             id={item._id}
