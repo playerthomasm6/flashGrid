@@ -60,7 +60,7 @@ function ModalForm(props) {
           <Button variant="secondary" onClick={props.handleClose}>
             Close
           </Button>
-          <Button variant="primary">Understood</Button>
+          <Button variant="primary">Save</Button>
         </Modal.Footer>
       </Modal>
     </>

@@ -193,8 +193,8 @@ function ProjectsContainer(props) {
   const [editData, setEditData] = useState({});
   const handleClose = () => setShow(false);
   const handleEditBtn = eData => {
-        setShow(true);
-        setEditData(eData);
+    setShow(true);
+    setEditData(eData);
   };
 
   return (
