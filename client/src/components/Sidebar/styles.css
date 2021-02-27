@@ -15,13 +15,12 @@
 }
 
 #adPic {
-    background: url('../../images/weightlossadd.jpg');
-    height: 500px;
-    width: 330px;
-    /* background-attachment: fixed; */
+    background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     margin-right: 40px;
     border-radius: 20px;
+    height: 520px;
+    width: 430px;
 }

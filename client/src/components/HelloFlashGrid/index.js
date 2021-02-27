@@ -8,11 +8,11 @@ function HelloFlashGrid() {
         <div className="container-fluid space-out">
 
             <div className="row">
-                <div className="col-sm-9">
+                <div className="col-sm-8">
                     <Jumbotron />
                 </div>
 
-                <div className="col-sm-3">
+                <div className="col-sm-4">
                 <Sidebar/>
                 </div>
 
