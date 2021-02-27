@@ -172,6 +172,10 @@ function ProjectsContainer(props) {
         console.log(currentProject[0].projectName)
         findProject("bullshit", currentProject[0].projectName)
       })
+      .then(() => {
+        const newTasks = currentProject.filter((task) => task._id !== id);
+        setCurrentProject(newTasks);
+      })
       .catch(err => console.log(err));
   }
 
@@ -234,6 +238,7 @@ function ProjectsContainer(props) {
     }
     API.saveTask(task)
       .then(res => loadProjects())
+      .then(() => {setCurrentProject([...currentProject, task]);})
       .then(() => setTaskFormBoolean(false))
       .then(() => setFormState({}))
       .catch(err => console.log(err));
