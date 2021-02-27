@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles.css";
+import { Link } from "react-router-dom";
 
 function Nav() {
     return (
@@ -7,27 +8,27 @@ function Nav() {
             <div className="container">
                 <div className="row">
                     <div className="col">
-                        <a className="navbar-brand" href="/">
+                        <Link className="navbar-brand" to="/">
                             Home
-                        </a>
+                        </Link>
                     </div>
 
                     <div className="col">
-                        <a className="navbar-brand" href="/about">
+                        <Link className="navbar-brand" to="/about">
                             About
-                        </a>
+                        </Link>
                     </div>
 
                     <div className="col">
-                        <a className="navbar-brand" href="/projects">
+                        <Link className="navbar-brand" to="/projects">
                             My Projects
-                        </a>
+                        </Link>
                     </div>
 
                     <div className="col">
-                        <a className="navbar-brand" href="/">
+                        <Link className="navbar-brand" to="/Login">
                             Login
-                        </a>
+                        </Link>
                     </div>
                 </div>
 

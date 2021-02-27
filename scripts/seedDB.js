@@ -13,6 +13,25 @@ mongoose.connect(
   "mongodb://localhost/task"
 );
 
+
+const userSeed = [
+  {
+    username: "Mattman7",
+    password: "Bigjimmy221"
+  },
+  {
+    username: "ThomasP",
+    password:"Thomasp255"
+  },
+  {
+    username: "GrifSut",
+    password: "tiktokboy"
+  }
+  
+  
+];
+
+
 const taskSeed = [
   {
     userName: "playerthomasm6@gmail.com",

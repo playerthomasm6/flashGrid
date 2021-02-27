@@ -2,7 +2,8 @@ import React, {useState} from "react";
 
 import { Link } from "react-router-dom";
 
-import { auth } from "../utils/firebase";
+import { signInWithGoogle, auth } from "../utils/firebase";
+
 
 const SignIn = () => {
     const [email, setEmail] = useState('');
@@ -28,6 +29,8 @@ const SignIn = () => {
           setPassword(value);
         }
     };
+
+    
 return (
     <div className="mt-8">
       <h1 className="text-3xl mb-2 text-center font-bold">Sign In</h1>
@@ -42,7 +45,7 @@ return (
             className="my-1 p-1 w-full"
             name="userEmail"
             value = {email}
-            placeholder="E.g: faruq123@gmail.com"
+            placeholder=""
             id="userEmail"
             onChange = {(event) => onChangeHandler(event)}
           />
@@ -54,7 +57,7 @@ return (
             className="mt-1 mb-3 p-1 w-full"
             name="userPassword"
             value = {password}
-            placeholder="Your Password"
+            placeholder=""
             id="userPassword"
             onChange = {(event) => onChangeHandler(event)}
           />
@@ -62,13 +65,22 @@ return (
             Sign in
           </button>
         </form>
+        <p className="text-center my-3">or</p>
+        <button
+          className="bg-red-500 hover:bg-red-600 w-full py-2 text-white"
+          onClick={() => {
+            signInWithGoogle();
+          }}
+        >
+          Sign in with Google
+        </button>
         <p className="text-center my-3">
           Don't have an account?{" "}
-          <Link to="signUp" className="text-blue-500 hover:text-blue-600">
+          <Link to="SignUp" className="text-blue-500 hover:text-blue-600" >
             Sign up here
           </Link>{" "}
           <br />{" "}
-          <Link to = "passwordReset" className="text-blue-500 hover:text-blue-600">
+          <Link to = "PasswordReset" className="text-blue-500 hover:text-blue-600">
             Forgot Password?
           </Link>
         </p>

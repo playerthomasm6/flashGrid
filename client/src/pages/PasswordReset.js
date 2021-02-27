@@ -2,12 +2,12 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { auth } from "../utils/firebase";
-import { Link } from "@reach/router";
+import { Link } from "react-router-dom";
 
 
 const PasswordReset = () => {
 
-    const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("");
   const [emailHasBeenSent, setEmailHasBeenSent] = useState(false);
   const [error, setError] = useState(null);
   const onChangeHandler = event => {

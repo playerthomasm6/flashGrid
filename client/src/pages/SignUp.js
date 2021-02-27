@@ -1,11 +1,12 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import { Link } from "@reach/router";
-import { auth, generateUserDocument } from "../utils/firebase";
+import { Link } from "react-router-dom";
+import { auth, generateUserDocument, signInWithGoogle } from "../utils/firebase";
+
 
 const SignUp = () => {
-const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [error, setError] = useState(null);
@@ -35,8 +36,6 @@ const [email, setEmail] = useState("");
   };
 
 
-
-
   return (
     <div className="mt-8">
       <h1 className="text-3xl mb-2 text-center font-bold">Sign Up</h1>
@@ -55,7 +54,7 @@ const [email, setEmail] = useState("");
             className="my-1 p-1 w-full "
             name="displayName"
             value={displayName}
-            placeholder="E.g: Faruq"
+            placeholder=""
             id="displayName"
             onChange={event => onChangeHandler(event)}
           />
@@ -67,7 +66,7 @@ const [email, setEmail] = useState("");
             className="my-1 p-1 w-full"
             name="userEmail"
             value={email}
-            placeholder="E.g: faruq123@gmail.com"
+            placeholder=""
             id="userEmail"
             onChange={event => onChangeHandler(event)}
           />
@@ -79,7 +78,7 @@ const [email, setEmail] = useState("");
             className="mt-1 mb-3 p-1 w-full"
             name="userPassword"
             value={password}
-            placeholder="Your Password"
+            placeholder=""
             id="userPassword"
             onChange={event => onChangeHandler(event)}
           />
@@ -94,6 +93,13 @@ const [email, setEmail] = useState("");
         </form>
         <p className="text-center my-3">or</p>
         <button
+          onClick={() => {
+            try {
+              signInWithGoogle();
+            } catch (error) {
+              console.error("Error signing in with Google", error);
+            }
+          }}
           className="bg-red-500 hover:bg-red-600 w-full py-2 text-white"
         >
           Sign In with Google
