@@ -5,36 +5,34 @@ import API from "../../utils/API";
 import ModalForm from "../Modal";
 import RenderForm from "../RenderForm";
 import TaskFormButton from "../TaskFormButton";
+import ProjectForm from "../ProjectForm";
 
 
 function ProjectsContainer(props) {
   const [user, setUser] = useState({})
   const [projectNameList, setProjectNameList] = useState([]);
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState([]); // SETS PROJECTS AFTER FILTER BY USERNAME
+  const [userProjects, setUserProjects] = useState([]); // SETS PROJECT LIST PRIOR TO FILTER FROM USER PROJECTS
   const [currentProject, setCurrentProject] = useState([]);
-  const [test, setTest] = useState({});
   const [taskForm, setTaskForm] = useState();
-  const [taskFormBoolean, setTaskFormBoolean] = useState(false);
-  const [formState, setFormState] = useState({});
+  const [taskFormBoolean, setTaskFormBoolean] = useState(false); // USE TO DECIDE TO RENDER THE FORM OR BUTTON
+  const [formState, setFormState] = useState({}); // USE TO COLLECT TASK FORM INPUT VALUES
+  const [projectForm, setProjectForm] = useState({}) // USE TO COLLECT PROJECT FORM INPUT VALUES
+  const [active, setActive] = useState(false) //USE FOR SETTING ACTIVE CLASS
+
+
 
   useEffect(() => {
-    // This will not be hard coded once the log in system is up and running.
-    setProjects(data);
-    loadProjects();
-    // .catch(err => console.log(err)));
-    console.log(test);
-    // renderProjects();
+
+    loadProjects(); // ON LOAD OF PAGE API CALL TO GET ALL PROJECTS WILL BE CALLED
+
   }, []);
 
   useEffect(() => {
-    console.log(test);
-  }, [test]);
 
-  function findProject(e, item) {
-    const foundProject = projects.filter(project => item === project.projectName)
-    setCurrentProject(foundProject)
+    filterProjectsUserName(); // IF userProjects IS CHANGED 
 
-  }
+  }, [userProjects]);
 
   // sets the project name list when the projects changes
   useEffect(() => {
@@ -46,6 +44,26 @@ function ProjectsContainer(props) {
     setUser({ userName: "playerthomasm6@gmail.com" })
     setProjectNameList([...new Set(NameList)]);
   }, [projects])
+  
+  
+  const loadProjects = () => { // LOADS ALL PROJECTS FROM THE API
+    API.getProjects().then(res => setUserProjects(res.data));
+  };
+
+  const filterProjectsUserName = () => {
+    console.log(user.userName)
+    const filteredUserProjects = userProjects.filter(project => user.userName === project.userName)
+    setProjects(filteredUserProjects)
+  }
+
+  
+  function findProject(e, item) { // FILTERS ALL TASKS WITH THE CLICK ON PROJECT NAME
+    const foundProject = projects.filter(project => item === project.projectName)
+    setCurrentProject(foundProject)
+
+  }
+
+  
 
   const data = [
     {
@@ -149,18 +167,20 @@ function ProjectsContainer(props) {
     }
   ];
 
-  const loadProjects = () => {
-    API.getProjects().then(res => setProjects(res.data));
-  };
+  
 
   // function handleInputChange(event) {
   //     const { name, value } = event.target;
   //     setFormObject({...formObject, [name]: value})
   //   };
 
-  // DELETE TASK
-  // ==========================
-  function deleteThatTask(id) {
+
+
+  // =============================================================================================================
+  // |         CRUD FUNCTIONS        |      DELETE      |     CREATE      |     EDIT      |
+  // =============================================================================================================
+
+  function deleteThatTask(id) { // DELETE TASK BY ID
     console.log(id);
     API.deleteTask(id)
       .then(res => {
@@ -179,48 +199,13 @@ function ProjectsContainer(props) {
       .catch(err => console.log(err));
   }
 
-  // CREATE TASK
-  // ==========================
-  function createNewTask() {
-    console.log(currentProject)
-    const task = {
-      userName: currentProject[0].userName,
-      projectName: currentProject[0].projectName,
-      projectDescription: currentProject[0].projectDescription,
-      taskName: formState.userName,
-      taskDescription: formState.taskDescription,
-      taskAssigne: formState.taskAssigne,
-      taskDueDate: formState.taskDueDate,
-      taskComplete: false
-    }
-    API.saveTask(task)
-      .then(res => loadProjects())
-      .catch(err => console.log(err));
+  function handleFormInput(event) { // HANDLES TASK FORM INPUTS
+    const { name, value } = event.target
+
+    setFormState({ ...formState, [name]: value })
   }
 
-  function handleNow(event) {
-    const value = event.target.getAttribute("value");
-    const name = event.target.getAttribute("name");
-
-    console.log(value + name);
-    setCurrentProject({ currentProject: value });
-    console.log(currentProject);
-  }
-
-  const [show, setShow] = useState(false);
-  const [editData, setEditData] = useState({});
-  const handleClose = () => setShow(false);
-  const handleEditBtn = eData => {
-    setShow(true);
-    setEditData(eData);
-  };
-
-  const loadTaskForm = () => {
-    console.log("it worked")
-    setTaskFormBoolean(true)
-  }
-
-  const submitNewTask = (e) => {
+  const submitNewTask = (e) => { // CREATE NEW TASK
     e.preventDefault();
     console.log("New Task Created");
 
@@ -244,13 +229,73 @@ function ProjectsContainer(props) {
       .catch(err => console.log(err));
   }
 
+
+  function handleProjectFormInput(event) { // HANDLES TASK FORM INPUTS
+    const { name, value } = event.target
+
+    setProjectForm({ ...projectForm, [name]: value })
+    console.log(projectForm)
+  }
+
+
+  const createNewProject = () => { // CREATE NEW PROJECT
+    console.log("Project Created!!... unless it wasn't?  No?  Ok I will look into it");
+    const newProject = {
+      // userName: user.userName,
+      userName: "playerthomasm6@gmail.com",
+      projectName: projectForm.projectName,
+      projectDescription: projectForm.projectDescription,
+      taskName: "Create tasks for your new project!",
+      taskDescription: "Describe your tasks!",
+      taskAssigne: "Assign someone the task",
+      taskDueDate: "2021-05-15T04:00:00.000Z",
+      taskComplete: false
+    }
+    API.saveTask(newProject)
+      .then(res => loadProjects())
+      // .then(() => {setCurrentProject([...currentProject, newProject]);})
+      .then(() => setTaskFormBoolean(false))
+      .then(() => setFormState({}))
+      .catch(err => console.log(err));
+
+  }
+
+// ==================================================================================================================
+
+
+
+
+  function handleNow(event) {
+    const value = event.target.getAttribute("value");
+    const name = event.target.getAttribute("name");
+
+    console.log(value + name);
+    setCurrentProject({ currentProject: value });
+    console.log(currentProject);
+  }
+
+  const [show, setShow] = useState(false);
+  const [editData, setEditData] = useState({});
+  const handleClose = () => setShow(false);
+  const handleEditBtn = eData => {
+    setShow(true);
+    setEditData(eData);
+  };
+
+  const loadTaskForm = () => {
+    console.log("it worked")
+    setTaskFormBoolean(true)
+  }
+
+  
+
   function handleFormInput(event) {
     const { name, value } = event.target
 
     setFormState({ ...formState, [name]: value })
   }
 
-  const getForm = () => {
+  const getForm = () => { // checks for boolean state and renders either form or button which changes the boolean state to render the form
     if (taskFormBoolean) {
       return <RenderForm
         formState={formState}
@@ -264,27 +309,70 @@ function ProjectsContainer(props) {
     }
   }
 
-  return (
+  const getProjectForm = () => { // checks for boolean state and renders either form or button which changes the boolean state to render the form
+    if (!taskFormBoolean) {
+      return <ProjectForm
+        projectForm={projectForm}
+        createNewProject={(e) => createNewProject(e)}
+        handleProjectFormInput={(e) => handleProjectFormInput(e)}
+      />
+    } else {
+      return <TaskFormButton
+        loadTaskForm={() => loadTaskForm()}
+      />
+    }
+  }
+
+  const makeActive = (item) => {
+    if(item === item) {
+      return "active pointer"
+    } else {
+      return "pointer"
+    }
+  }
+
+
+
+
+// ===================================================================================================
+// RETURN | RENDER  |
+// ===================================================================================================
+  return ( 
     <>
       <ModalForm show={show} handleClose={handleClose} editData={editData} />
       <div className="container-fluid space-out">
         <h6>Current User: {user.userName}</h6>
-
-        <div className="row"></div>
+        {/* <button onClick={() => createNewProject()}>Create Project</button> */}
 
         <div className="row">
           <div className="col-sm-2">
-            {projectNameList.map(item => (
-              <p
+          <table class="table striped bordered hover">
+              <thead>
+                <tr>
+                  <th scope="col">Projects</th>
+                </tr>
+              </thead>
+              <tbody>
+
+            {
+            
+            projectNameList.map(item => (
+              <tr>
+              <td
                 className="pointer"
                 key={item + "1"}
                 value={item}
                 // name={item.userName}
-                onClick={event => findProject(event, item)}
-              >
-                {item}
-              </p>
+                onClick={event => {findProject(event, item)}}
+              > <h6 >{item}</h6>
+                
+              </td>
+              
+              </tr>
             ))}
+                
+            </tbody>
+            </table>
           </div>
 
           <div className="col-sm-10">
@@ -305,8 +393,11 @@ function ProjectsContainer(props) {
                     <td 
                     id={item._id} 
                     name="taskName">
+                      <h6>
                       {item.taskName}
+                      </h6>
                       <button
+                      className="delete-button"
                         value={item._id}
                         onClick={e => deleteThatTask(e.target.value)}
                       >
@@ -314,7 +405,11 @@ function ProjectsContainer(props) {
                       </button>
                     </td>
 
-                    <td> {item.taskDescription}</td>
+                    <td> 
+                      <p>
+                      {item.taskDescription}
+                      </p>
+                    </td>
 
                     <td>{item.taskAssigne}</td>
 
@@ -326,11 +421,15 @@ function ProjectsContainer(props) {
                 ))}
               </tbody>
             </table>
-            <div>
-              {getForm()}
-            </div>
+            
           </div>
         </div>
+            <div className="row">
+              <div className="col-sm-12">
+              {getForm()}
+              {getProjectForm()}
+              </div>
+            </div>
       </div>
     </>
   );
