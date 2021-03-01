@@ -1,0 +1,11 @@
+.font-item {
+    font-size: 12px;
+}
+
+.pointer:hover {
+    cursor: pointer;
+}
+
+.project-list {
+    width: 50%;
+}

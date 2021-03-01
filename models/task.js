@@ -13,14 +13,10 @@ const taskSchema = new Schema({
 
 });
 
-const userSchema = new Schema({
-  username: String,
-  password:String,
-})
 
 const Task = mongoose.model("task", taskSchema);
-const User = mongoose.model("user", userSchema);
+
 
 module.exports = Task;
 
-module.exports= User;
+
