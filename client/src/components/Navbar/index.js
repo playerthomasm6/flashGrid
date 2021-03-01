@@ -5,21 +5,35 @@ import "./styles.css";
 function Nav() {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark nav-color">
-            <div className="container" id="main_menu">
-                <div class="logo_area">
-                    <a href=""><img src="flashgrid.png"></img></a>
+            <div className="container">
+                <a href=""><img src="flashgrid-logo-white.png"></img></a>
+                <div className="col">
+                    <a className="navbar-brand" href="/">
+                        Home
+                    </a>
                 </div>
-                <div className="row" id="inner_main_menu">
-                    <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/about">About</a></li>
-                        <li><a href="/login">Log In</a></li>
-                        <li><a href="/projects">My Projects</a></li>
-                        <li><a href="/register"> Register here!</a></li>
-                    </ul>
+                <div className="col">
+                    <a className="navbar-brand" href="/about">
+                        about
+                    </a>
                 </div>
-
+                <div className="col">
+                    <a className="navbar-brand" href="/projects">
+                        My Projects
+                    </a>
+                </div>
+                <div className="col">
+                    <a className="navbar-brand" href="/login">
+                        Log In
+                    </a>
+                </div>
+                <div className="col">
+                    <a className="navbar-brand" href="/register">
+                        Sign In
+                    </a>
+                </div>
             </div>
+                
 
          
         </nav>
