@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import { auth } from "../../utils/firebase";
 
@@ -8,9 +8,15 @@ const SignIn = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
 
+    useEffect(() => {
+      console.log(`user is signed in as ${email}`);
+      localStorage.setItem('signedInUser', email);
+    }, [email]);
+
     const signInWithEmailAndPasswordHandler = (event,email, password) => {
         event.preventDefault();
-        auth.signInWithEmailAndPassword(email, password).catch(error => {
+        auth.signInWithEmailAndPassword(email, password)
+        .catch(error => {
         setError("Error signing in with password and email!");
           console.error("Error signing in with password and email", error);
         });

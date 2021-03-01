@@ -23,12 +23,12 @@ function ProjectsContainer(props) {
   const [projectForm, setProjectForm] = useState({}) // USE TO COLLECT PROJECT FORM INPUT VALUES
   const [active, setActive] = useState(false) //USE FOR SETTING ACTIVE CLASS
 
-
+  const signedInUser = localStorage.getItem('signedInUser')
 
   useEffect(() => {
 
     loadProjects(); // ON LOAD OF PAGE API CALL TO GET ALL PROJECTS WILL BE CALLED
-
+    console.log("The user " + signedInUser + " is loggined in...")
   }, []);
 
   useEffect(() => {
@@ -44,7 +44,7 @@ function ProjectsContainer(props) {
         item.projectName
       )
     });
-    setUser({ userName: "playerthomasm6@gmail.com" })
+    setUser({ userName: signedInUser })
     setProjectNameList([...new Set(NameList)]);
   }, [projects])
   
@@ -247,7 +247,7 @@ function ProjectsContainer(props) {
     console.log("Project Created!!... unless it wasn't?  No?  Ok I will look into it");
     const newProject = {
       // userName: user.userName,
-      userName: "playerthomasm6@gmail.com",
+      userName: user.userName,
       projectName: projectForm.projectName,
       projectDescription: projectForm.projectDescription,
       taskName: "Create tasks for your new project!",
