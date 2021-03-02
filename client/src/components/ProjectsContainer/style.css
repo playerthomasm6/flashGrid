@@ -1,0 +1,34 @@
+.font-item {
+    font-size: 4px;
+}
+
+.delete-button {
+    color: red;
+    background-color: rgba(0, 0, 0, 0);
+    outline: none;
+    border: none;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.td {
+    min-width: 100%;
+}
+
+.active {
+    background-color: rgba(206, 110, 110, 0.986);
+}
+
+.align-center {
+    text-align: center;
+    align-content: center;
+}
+
+
+
+.border {
+    border: solid black 3px;
+    width: 100%;
+    height: 100%;
+    
+}

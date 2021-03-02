@@ -6,11 +6,10 @@ import Nav from "../components/Navbar";
 // import projects from "../projects.js"
 import ProjectsContainer from "../components/ProjectsContainer";
 
-function MyProjects() {
+function MyProjects(props) {
     
     return (
         <div>
-            <h1>This is projects!!!!!!!</h1>
             <Nav />
             <ProjectsContainer/>
         

@@ -4,7 +4,7 @@ import "firebase/firestore";
 
 
 
-var firebaseConfig = {
+const firebaseConfig =  {
     apiKey: "AIzaSyBDX2a0q5OO42UrjOlyBHA5R01VMsSyfDo",
     authDomain: "flash-grid.firebaseapp.com",
     projectId: "flash-grid",
@@ -15,16 +15,15 @@ var firebaseConfig = {
   };
 
   firebase.initializeApp(firebaseConfig);
-export const auth = firebase.auth();
+  export const auth = firebase.auth();
 export const firestore = firebase.firestore();
-
-
-
 
 export const generateUserDocument = async (user, additionalData) => {
   if (!user) return;
+
   const userRef = firestore.doc(`users/${user.uid}`);
   const snapshot = await userRef.get();
+
   if (!snapshot.exists) {
     const { email, displayName, photoURL } = user;
     try {
@@ -40,10 +39,12 @@ export const generateUserDocument = async (user, additionalData) => {
   }
   return getUserDocument(user.uid);
 };
+
 const getUserDocument = async uid => {
   if (!uid) return null;
   try {
     const userDocument = await firestore.doc(`users/${uid}`).get();
+
     return {
       uid,
       ...userDocument.data()
@@ -52,5 +53,17 @@ const getUserDocument = async uid => {
     console.error("Error fetching user", error);
   }
 };
+
+
+
+
+
+
+
+
+
+
+
+
 
 
