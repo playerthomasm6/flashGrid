@@ -26,7 +26,7 @@ function ModalForm(props) {
                 Task Name:
               </Form.Label>
               <Col sm="10">
-                <Form.Control defaultValue={editData.taskName} />
+                <Form.Control onChange={props.editChangeData} defaultValue={editData.taskName} name = "taskName"/>
               </Col>
             </Form.Group>
 
@@ -35,7 +35,7 @@ function ModalForm(props) {
                 Task Desc:
               </Form.Label>
               <Col sm="10">
-                <Form.Control defaultValue={editData.taskDescription} />
+                <Form.Control onChange={props.editChangeData} defaultValue={editData.taskDescription} name = "taskDescription" />
               </Col>
             </Form.Group>
             <Form.Group as={Row} controlId="formPlaintextPassword">
@@ -43,7 +43,7 @@ function ModalForm(props) {
                 Task Assignee:
               </Form.Label>
               <Col sm="10">
-                <Form.Control defaultValue={editData.taskAssigne} />
+                <Form.Control onChange={props.editChangeData} defaultValue={editData.taskAssigne} name = "taskAssigne"/>
               </Col>
             </Form.Group>
             <Form.Group as={Row} controlId="formPlaintextPassword">
@@ -51,7 +51,7 @@ function ModalForm(props) {
                 Task Duedate:
               </Form.Label>
               <Col sm="10">
-                <Form.Control defaultValue={editData.taskDueDate} />
+                <Form.Control onChange={props.editChangeData} defaultValue={editData.taskDueDate} name = "taskDuedate"/>
               </Col>
             </Form.Group>
           </Form>
@@ -60,7 +60,7 @@ function ModalForm(props) {
           <Button variant="secondary" onClick={props.handleClose}>
             Close
           </Button>
-          <Button variant="primary">Save</Button>
+          <Button variant="primary" onClick={props.editDataSave}>Save</Button>
         </Modal.Footer>
       </Modal>
     </>
