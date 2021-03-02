@@ -3,6 +3,7 @@ import "./styles.css"
 import { Link } from "react-router-dom";
 import { auth } from "../../utils/firebase";
 import { FiArrowRightCircle } from 'react-icons/fi';
+import { Col, Row, Container } from 'react-bootstrap'
 
 const SignIn = () => {
     const [email, setEmail] = useState('');
@@ -29,6 +30,10 @@ const SignIn = () => {
         }
     };
 return (
+  <Container>
+  <div className='spacer'></div>
+  <br></br>
+  <br></br>
     <div className="mt-8" id='signin'>
       <h1 className="text-3xl mb-2 text-center font-bold" id='signIn-text'>Sign In</h1>
       {/* <div className="border border-blue-400 mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8"> */}
@@ -36,7 +41,7 @@ return (
         <form className="">
           <input
             type="email"
-            className="my-1 p-1 w-full input"
+            className="input my-1 p-1 w-full"
             name="userEmail"
             value = {email}
             placeholder="Your Email"
@@ -45,7 +50,7 @@ return (
           />
           <input
             type="password"
-            className="mt-1 mb-3 p-1 w-full input"
+            className="input mt-1 mb-3 p-1 w-full"
             name="userPassword"
             value = {password}
             placeholder="Your Password"
@@ -55,10 +60,10 @@ return (
           <button type="button" class="btn btn-light btn-lg btn-block" id='signInBtn' onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}}>Sign In <FiArrowRightCircle/></button>
         <br></br>
         </form>
-        <p className="text-center my-3 sign-or-pass" >
+        <p className="text-center my-3 sign-or-pass" id='dontMessage'>
           Don't have an account?{" "}
           <Link to="signUp" className="sign-or-pass noAccBtn">
-            Sign up here
+            Sign up 
           </Link>{" "}
           <br />{" "}
           <Link to = "passwordReset" className="sign-or-pass noAccBtn">
@@ -66,7 +71,7 @@ return (
           </Link>
         </p>
       </div>
-    // </div>
+    </Container>
 );
 
 }

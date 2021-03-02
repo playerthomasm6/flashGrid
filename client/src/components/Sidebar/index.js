@@ -10,20 +10,14 @@ function Sidebar() {
   const photos = [{
     id: 0,
     url: background1,
-    height: 550,
-    width: 500,
   },
   {
     id: 1,
     url: background2,
-    height: 600,
-    width: 430,
   },
   {
     id: 2,
     url: background3,
-    height: 520,
-    width: 430,
   }
 
 ] 
@@ -40,14 +34,6 @@ function Sidebar() {
         id="adPic" height={photos[indexOfImages].height} width={photos[indexOfImages].width}>
         </div>
         <div className="row padding light-border">
-          <div className="col padding">
-            <h6>This is a title of a thing</h6>
-            <p>
-              This is describing that thing in more detail. Think of all the
-              helpfull information we could add here. Maybe some tips or other
-              kinds of words and such. The skys the limits.
-            </p>
-          </div>
         </div>
     </div>
   );

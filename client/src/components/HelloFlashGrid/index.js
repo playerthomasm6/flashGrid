@@ -12,7 +12,7 @@ function HelloFlashGrid() {
                     <Jumbotron />
                 </div>
 
-                <div className="col-sm-4">
+                <div className="col-sm-4" id='sidebar'>
                 <Sidebar/>
                 </div>
             </div>
