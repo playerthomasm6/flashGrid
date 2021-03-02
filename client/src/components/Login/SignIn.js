@@ -66,7 +66,7 @@ const SignIn = () => {
             onChange = {(event) => onChangeHandler(event)}
           />
           <button className="bg-green-400 hover:bg-green-500 w-full py-2 text-white" onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}}>
-            <Link to="/" classname="text-blue-500 hover:text-blue-600">
+            <Link to="/projects" classname="text-blue-500 hover:text-blue-600">
               Sign In
             </Link>
           </button>
