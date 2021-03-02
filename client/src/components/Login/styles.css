@@ -1,0 +1,53 @@
+.input {
+    background-color: #004E89!important;
+    outline: none;
+    border: 1px solid rgb(182, 182, 201);
+    padding-right: 10px;
+    color: white;
+    border-radius: 10px;
+    transition: 0.5s;  
+}
+
+.input::placeholder {
+    color: white;
+}
+
+.input:active {
+    box-shadow: 0 0 14px 12px rgb(255, 0, 0);
+}
+
+.input:hover {
+    border: 1px solid rgb(255, 255, 255);
+}
+
+@media (min-width: 1200px){
+    .input {
+        width: 275px;
+    }
+}
+
+
+#signInBtn {
+    width: 275px;
+    height: 50px;
+}
+
+#signin {
+    border-radius: 10px;
+    background-color: #004E89;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    padding-top: 18px;
+}
+
+#signIn-text {
+    color: white;
+}
+
+.sign-or-pass {
+    color: white;
+}
+
+.noAccBtn:hover {
+    font-weight: 400px!important;
+}

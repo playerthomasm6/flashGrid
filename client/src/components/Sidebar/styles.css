@@ -1,11 +1,26 @@
+.whole {
+    padding-top: 60px;
+    padding-bottom: 10px!important;
+}
+
 .padding {
-    padding: 1%;
-    
+    padding: 1%;    
 }
 
 .light-border {
-    border: solid;
-    border-color: rgba(21, 24, 211, 0.068);
+    /* border: solid; */
+    /* border-color: rgba(21, 24, 211, 0.068); */
     border-width: 5px;
     margin:2%!important;
+}
+
+#adPic {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-right: 40px;
+    border-radius: 20px;
+    height: 520px;
+    width: 100%;
 }
