@@ -344,7 +344,7 @@ function ProjectsContainer(props) {
  function editDataSave(){
      console.log("worked edit") 
      console.log(editData)
-  
+    
 
      }
 
