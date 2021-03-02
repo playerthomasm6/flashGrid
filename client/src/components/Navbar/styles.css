@@ -2,6 +2,11 @@
     background-color: #004e89;
 }
 
+#logo {
+    padding-left: 20px;
+    padding-right: 100px;
+}
+
 img{
     max-width: 300px;
     height: 75px;
@@ -20,4 +25,14 @@ img{
 .navbar-brand {
     margin-top: 15px;
     font-family: 'Righteous', cursive;
+}
+
+.navcol {
+  padding-bottom: 15px;
+  padding-left: 40px;
+  padding-right: 30px;
+}
+
+.navcol:hover {
+    background-color: rgb(69, 151, 228);
 }
