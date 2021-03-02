@@ -15,10 +15,15 @@ export default {
     return axios.delete("/api/projects/" + id);
   },
   deleteProject: function(id) {
-      return axios.delete("/api/projects")
+    return axios.delete("/api/projects");
   },
   // Saves a book to the database
   saveTask: function(task) {
     return axios.post("/api/projects", task);
+  },
+
+  editTask: function(id) {
+    return axios.put("/api/projects", id);
   }
 };
+

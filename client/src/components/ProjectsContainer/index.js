@@ -25,6 +25,7 @@ function ProjectsContainer(props) {
 
   const signedInUser = localStorage.getItem('signedInUser')
 
+
   useEffect(() => {
 
     loadProjects(); // ON LOAD OF PAGE API CALL TO GET ALL PROJECTS WILL BE CALLED
@@ -281,6 +282,7 @@ function ProjectsContainer(props) {
 
   const [show, setShow] = useState(false);
   const [editData, setEditData] = useState({});
+  
   const handleClose = () => setShow(false);
   const handleEditBtn = eData => {
     setShow(true);
@@ -339,6 +341,24 @@ function ProjectsContainer(props) {
     }
   }
 
+ function editDataSave(){
+     console.log("worked edit") 
+     console.log(editData)
+    
+
+     }
+
+// 
+  function editChangeData(event){
+    const newTarget = event.target.name
+    const newValue = event.target.value
+      console.log(event.target.name)
+      console.log(event.target.value)
+      
+      const data= {...editData, [`${newTarget}`]:newValue}
+      setEditData(data)
+      console.log(editData)
+     }
 
 
 
@@ -347,7 +367,7 @@ function ProjectsContainer(props) {
 // ===================================================================================================
   return ( 
     <>
-      <ModalForm show={show} handleClose={handleClose} editData={editData} />
+      <ModalForm show={show} handleClose={handleClose} editData={editData} editDataSave={editDataSave} editChangeData={editChangeData} />
       <div className="container-fluid space-out">
         <h6>Current User: {user.userName}</h6>
         {/* <button onClick={() => createNewProject()}>Create Project</button> */}
