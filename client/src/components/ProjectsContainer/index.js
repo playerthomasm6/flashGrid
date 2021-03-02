@@ -372,7 +372,9 @@ function ProjectsContainer(props) {
                 value={item}
                 // name={item.userName}
                 onClick={event => {findProject(event, item)}}
-              > <h5 className="align-center">{item}</h5>
+              > <h5 
+              id={item}
+              className="align-center">{item}</h5>
                 
               </td>
               
