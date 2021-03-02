@@ -18,17 +18,18 @@ function ProjectsContainer(props) {
   const [currentProject, setCurrentProject] = useState([]);
   const [taskForm, setTaskForm] = useState();
   const [taskFormBoolean, setTaskFormBoolean] = useState(false); // USE TO DECIDE TO RENDER THE FORM OR BUTTON
+  const [clickedProject, setClickedProject] = useState(false); // USE TO DECIDE TO RENDER THE FORM OR BUTTON
   const [formState, setFormState] = useState({}); // USE TO COLLECT TASK FORM INPUT VALUES
   const [projectForm, setProjectForm] = useState({}) // USE TO COLLECT PROJECT FORM INPUT VALUES
   const [active, setActive] = useState(false) //USE FOR SETTING ACTIVE CLASS
 
-
+  const signedInUser = localStorage.getItem('signedInUser')
 
 
   useEffect(() => {
 
     loadProjects(); // ON LOAD OF PAGE API CALL TO GET ALL PROJECTS WILL BE CALLED
-
+    console.log("The user " + signedInUser + " is loggined in...")
   }, []);
 
   useEffect(() => {
@@ -44,7 +45,7 @@ function ProjectsContainer(props) {
         item.projectName
       )
     });
-    setUser({ userName: "playerthomasm6@gmail.com" })
+    setUser({ userName: signedInUser })
     setProjectNameList([...new Set(NameList)]);
   }, [projects])
   
@@ -61,6 +62,8 @@ function ProjectsContainer(props) {
 
   
   function findProject(e, item) { // FILTERS ALL TASKS WITH THE CLICK ON PROJECT NAME
+    setTaskFormBoolean(false)
+    setClickedProject(true);
     const foundProject = projects.filter(project => item === project.projectName)
     setCurrentProject(foundProject)
 
@@ -245,7 +248,7 @@ function ProjectsContainer(props) {
     console.log("Project Created!!... unless it wasn't?  No?  Ok I will look into it");
     const newProject = {
       // userName: user.userName,
-      userName: "playerthomasm6@gmail.com",
+      userName: user.userName,
       projectName: projectForm.projectName,
       projectDescription: projectForm.projectDescription,
       taskName: "Create tasks for your new project!",
@@ -299,14 +302,17 @@ function ProjectsContainer(props) {
     setFormState({ ...formState, [name]: value })
   }
 
+
+  
   const getForm = () => { // checks for boolean state and renders either form or button which changes the boolean state to render the form
-    if (taskFormBoolean) {
+    
+    if ((taskFormBoolean) && (clickedProject)) {
       return <RenderForm
         formState={formState}
         submitNewTask={(e) => submitNewTask(e)}
         handleFormInput={(e) => handleFormInput(e)}
       />
-    } else {
+    } else if ((!taskFormBoolean) && (clickedProject)) {
       return <TaskFormButton
         loadTaskForm={() => loadTaskForm()}
       />
@@ -338,7 +344,10 @@ function ProjectsContainer(props) {
  function editDataSave(){
      console.log("worked edit") 
      console.log(editData)
+  
+
      }
+
 // 
   function editChangeData(event){
     const newTarget = event.target.name
@@ -368,7 +377,7 @@ function ProjectsContainer(props) {
           <table class="table striped bordered hover">
               <thead>
                 <tr>
-                  <th scope="col">Projects</th>
+                  <th scope="col"><h4 className="align-center">Projects</h4></th>
                 </tr>
               </thead>
               <tbody>
@@ -383,7 +392,7 @@ function ProjectsContainer(props) {
                 value={item}
                 // name={item.userName}
                 onClick={event => {findProject(event, item)}}
-              > <h6 >{item}</h6>
+              > <h5 className="align-center">{item}</h5>
                 
               </td>
               
@@ -398,10 +407,11 @@ function ProjectsContainer(props) {
             <table class="table striped bordered hover">
               <thead>
                 <tr>
-                  <th scope="col">Tasks</th>
-                  <th scope="col">Description</th>
-                  <th scope="col">Assigned Personel</th>
-                  <th scope="col">Due Date</th>
+                  <th scope="col"><h4 className="align-center">Task Name</h4></th>
+                  <th scope="col"><h4 className="align-center">Description</h4></th>
+                  <th scope="col"><h4 className="align-center">Assigned Personel</h4></th>
+                  <th scope="col"><h4 className="align-center">Due Date</h4></th>
+                  <th scope="col"><h4 className="align-center">Manage</h4></th>
                 </tr>
               </thead>
               <tbody>
@@ -412,40 +422,44 @@ function ProjectsContainer(props) {
                     <td 
                     id={item._id} 
                     name="taskName">
-                      <h6>
-                      {item.taskName}
-                      </h6>
-                      <button
-                      className="delete-button"
-                        value={item._id}
-                        onClick={e => deleteThatTask(e.target.value)}
-                      >
-                        X
-                      </button>
+                      <h6 className="align-center">{item.taskName}</h6>
+                      
                     </td>
 
                     <td> 
-                      <p>
+                      <p className="align-center">
                       {item.taskDescription}
                       </p>
                     </td>
 
-                    <td>{item.taskAssigne}</td>
+                    <td><h6 className="align-center">{item.taskAssigne}</h6></td>
 
                     <td>
-                      {item.taskDueDate}{" "}
-                      <button onClick={() => handleEditBtn(item)}>Edit</button>
+                      <h6 className="align-center">{item.taskDueDate}</h6>{" "}
+                      
+                    </td>
+
+                    <td>
+                      <div className="align-center">
+                    <button onClick={() => handleEditBtn(item)}>Edit</button>
+                    <button className="delete-button align-center" value={item._id} onClick={e => deleteThatTask(e.target.value)}>[X]</button>
+                    </div>
                     </td>
                   </tr>
                 ))}
+
+                
               </tbody>
             </table>
-            
+            <div className="row">
+              <div className="col-sm-12">{getForm()}</div>
+              
+              </div>
           </div>
         </div>
             <div className="row">
               <div className="col-sm-12">
-              {getForm()}
+              
               {getProjectForm()}
               </div>
             </div>
