@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import "./styles.css"
 import { Link } from "react-router-dom";
 import { auth } from "../../utils/firebase";
@@ -9,6 +9,11 @@ const SignIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
+
+    useEffect(() => {
+      console.log(`user is signed in as ${email}`);
+      localStorage.setItem('signedInUser', email);
+    }, [email]);
     
     const signInWithEmailAndPasswordHandler = 
             (event,email, password) => {
@@ -57,7 +62,7 @@ return (
             id="userPassword"
             onChange = {(event) => onChangeHandler(event)}
           />
-          <button type="button" class="btn btn-light btn-lg btn-block" id='signInBtn' onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}}>Sign In <FiArrowRightCircle/></button>
+          <button type="button" class="btn btn-light btn-lg btn-block" id='signInBtn' onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}}><Link to="/projects" classname="text-blue-500 hover:text-blue-600">Sign In </Link><FiArrowRightCircle/></button>
         <br></br>
         </form>
         <p className="text-center my-3 sign-or-pass" id='dontMessage'>
