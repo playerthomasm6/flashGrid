@@ -32,7 +32,13 @@ function Nav() {
                     getUser()
                 }}
                 className="navbar-brand" href="/projects">
+                    <a 
+                    onClick={() => {alert("you logged out")}}
+                    className="navbar-brand" href="/">
                     Log Out
+                    
+                </a>
+                    
                 </div>
                 </div>
             </>
