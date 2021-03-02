@@ -18,3 +18,17 @@
 .active {
     background-color: rgba(206, 110, 110, 0.986);
 }
+
+.align-center {
+    text-align: center;
+    align-content: center;
+}
+
+
+
+.border {
+    border: solid black 3px;
+    width: 100%;
+    height: 100%;
+    
+}
