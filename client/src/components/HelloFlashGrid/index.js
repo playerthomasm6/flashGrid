@@ -3,7 +3,10 @@ import "./styles.css";
 import Jumbotron from "../Jumbotron";
 import Sidebar from "../Sidebar";
 
+
 function HelloFlashGrid() {
+
+    
     return (
         <div className="container-fluid space-out">
 
@@ -15,6 +18,7 @@ function HelloFlashGrid() {
                 <div className="col-sm-4" id='sidebar'>
                 <Sidebar/>
                 </div>
+
             </div>
 
         </div>
