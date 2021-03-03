@@ -2,20 +2,22 @@ import React from "react";
 import "./styles.css";
 import Jumbotron from "../Jumbotron";
 import Sidebar from "../Sidebar";
+import { Row, Col } from "react-bootstrap";
+
 
 function HelloFlashGrid() {
     return (
         <div className="container-fluid space-out">
 
-<div className="row">
-                <div className="col-sm-8">
+<Row>
+                <Col lg={8} md={12}>
                     <Jumbotron />
-                </div>
+                </Col>
 
-                <div className="col-sm-4" id='sidebar'>
+                <Col lg={4} md={12} id='sidebar'>
                 <Sidebar/>
-                </div>
-            </div>
+                </Col>
+            </Row>
 
         </div>
     );
