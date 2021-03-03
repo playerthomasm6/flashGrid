@@ -12,8 +12,6 @@ function MyProjects(props) {
         <div>
             <Nav />
             <ProjectsContainer/>
-        
-
         </div>
     );
 }
