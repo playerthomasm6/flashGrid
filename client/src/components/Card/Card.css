@@ -1,0 +1,37 @@
+.card {
+    padding: 4% 8% 4% 8%;
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3);
+    background-color: #e9ecef!important
+}
+
+.card:hover {
+    box-shadow: 0px 0px 10px 5px rgba(112,112,112,0.91)
+}
+
+.cardCon {
+    color: rgb(58, 58, 185);
+}
+
+@media (max-width: 992px) {
+    .cardCon {
+        color: rgb(58, 58, 185);
+    }
+}
+
+#serviceCard {
+    border-radius: 3vw 4vw 4vw 2vw;
+}
+
+@media (max-width: 992px) {
+    .card {
+    margin: 25px;
+    }
+}
+
+.card:hover {
+    box-shadow: 0 6px 12px #999, 0 6px 12px #999;
+}
+
+#cardRow {
+    padding-bottom: 20px
+}
