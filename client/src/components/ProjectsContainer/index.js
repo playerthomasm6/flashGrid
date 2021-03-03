@@ -344,17 +344,24 @@ function ProjectsContainer(props) {
     }
   }
 
+
+// this function runs when click Sav on modal
  function editDataSave(){
      console.log("worked edit") 
-     console.log(editData)
-    
+     console.log(editData._id)
+     let id = editData._id
+    API.editTask(id, editData)
+    .then(res => {
+      console.log(res)
+      handleClose() 
+      })
+      }
 
-     }
-
-// 
+// This function sets new data to the state. 
   function editChangeData(event){
     const newTarget = event.target.name
     const newValue = event.target.value
+     
       console.log(event.target.name)
       console.log(event.target.value)
       
