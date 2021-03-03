@@ -2,9 +2,14 @@ import React from "react";
 import "./styles.css";
 import Jumbotron from "../Jumbotron";
 import Sidebar from "../Sidebar";
+import { Row, Col } from "react-bootstrap";
+
+
 
 
 function HelloFlashGrid() {
+
+    
     return (
         <body>
             

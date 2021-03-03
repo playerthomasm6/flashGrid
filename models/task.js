@@ -8,7 +8,7 @@ const taskSchema = new Schema({
   taskName: String,
   taskDescription: String,
   taskAssigne: String,
-  taskDueDate: { type: Date, default: Date.now },
+  taskDueDate: String,
   taskComplete: false
 
 });

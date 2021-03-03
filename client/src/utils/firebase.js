@@ -1,6 +1,8 @@
 import firebase from "firebase/app";
 import "firebase/auth";
-import "firebase/firestore";
+import "firebase/firestore"; 
+
+
 
 
 
@@ -14,9 +16,24 @@ const firebaseConfig =  {
     measurementId: "G-BNXMXLH7KK"
   };
 
+
   firebase.initializeApp(firebaseConfig);
   export const auth = firebase.auth();
 export const firestore = firebase.firestore();
+
+
+    export const signOut = () =>
+      firebase.auth().signOut().then(() => {
+        console.log("user is signed out");
+       }).catch((error) => {
+         console.log("Error logging out")
+       })
+
+    
+
+
+
+
 
 export const generateUserDocument = async (user, additionalData) => {
   if (!user) return;

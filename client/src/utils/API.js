@@ -22,8 +22,8 @@ export default {
     return axios.post("/api/projects", task);
   },
 
-  editTask: function(id) {
-    return axios.put("/api/projects", id);
+  editTask: function(id, body) {
+    return axios.put(`/api/projects/${id}`, body);
   }
 };
 
