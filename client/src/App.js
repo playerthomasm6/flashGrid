@@ -6,13 +6,16 @@ import MyProjects from "./pages/myProjects.js";
 import About from "./pages/about";
 import Login from "./pages/login"
 import Register from "./pages/register"
+import UserProvider from './providers/UserProvider'
 
 
 function App() {
   return (
+    <UserProvider>
     <Router>
       <div>
         <Switch>
+          
           <Route exact path={"/"}>
             <Home />
           </Route>
@@ -33,6 +36,7 @@ function App() {
         </Switch>
       </div>
     </Router>
+    </UserProvider>
   );
 }
 

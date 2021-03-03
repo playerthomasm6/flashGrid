@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import "./styles.css"
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { auth } from "../../utils/firebase";
 import { FiArrowRightCircle } from 'react-icons/fi';
 import { Col, Row, Container } from 'react-bootstrap'
@@ -9,11 +9,17 @@ const SignIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
+    const history = useHistory()
+
+    useEffect(() => {
+      console.log(`user is signed in as ${email}`);
+      localStorage.setItem('signedInUser', email);
+    }, [email]);
     
     const signInWithEmailAndPasswordHandler = 
             (event,email, password) => {
                 event.preventDefault();
-                auth.signInWithEmailAndPassword(email, password).catch(error => {
+                auth.signInWithEmailAndPassword(email, password).then(() => history.push('/projects')).catch(error => {
                   setError("Error signing in with password and email!");
                   console.error("Error signing in with password and email", error);
                 });
@@ -57,7 +63,7 @@ return (
             id="userPassword"
             onChange = {(event) => onChangeHandler(event)}
           />
-          <button type="button" class="btn btn-light btn-lg btn-block" id='signInBtn' onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}}>Sign In <FiArrowRightCircle/></button>
+          <button type="button" class="btn btn-light btn-lg btn-block" id='signInBtn' onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}} className="text-blue-500 hover:text-blue-600">Sign In <FiArrowRightCircle/></button>
         <br></br>
         </form>
         <p className="text-center my-3 sign-or-pass" id='dontMessage'>

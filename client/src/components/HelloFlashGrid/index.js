@@ -5,7 +5,10 @@ import Sidebar from "../Sidebar";
 import { Row, Col } from "react-bootstrap";
 
 
+
 function HelloFlashGrid() {
+
+    
     return (
         <div className="container-fluid space-out">
 
@@ -16,8 +19,10 @@ function HelloFlashGrid() {
 
                 <Col lg={4} md={12} id='sidebar'>
                 <Sidebar/>
+
                 </Col>
             </Row>
+
 
         </div>
     );
