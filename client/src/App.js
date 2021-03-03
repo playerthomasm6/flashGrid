@@ -9,34 +9,34 @@ import Register from "./pages/register"
 import UserProvider from './providers/UserProvider'
 
 
+
 function App() {
   return (
-    <UserProvider>
-    <Router>
-      <div>
-        <Switch>
-          
-          <Route exact path={"/"}>
-            <Home />
-          </Route>
+      <UserProvider>
+        <Router>
+          <div>
+            <Switch>
+              <Route exact path={"/"}>
+                <Home />
+              </Route>
 
-          <Route exact path={"/projects"}>
-            <MyProjects />
-          </Route>
+              <Route exact path={"/projects"}>
+                <MyProjects />
+              </Route>
 
-          <Route exact path={"/about"}>
-            <About />
-          </Route>
-        <Route exact path={"/login"}>
-          <Login/>
-        </Route>
-        <Route exact path={"/register"}>
-          <Register />
-        </Route>
-        </Switch>
-      </div>
-    </Router>
-    </UserProvider>
+              <Route exact path={"/about"}>
+                <About />
+              </Route>
+              <Route exact path={"/login"}>
+                <Login />
+              </Route>
+              <Route exact path={"/register"}>
+                <Register />
+              </Route>
+            </Switch>
+          </div>
+        </Router>
+      </UserProvider>
   );
 }
 
