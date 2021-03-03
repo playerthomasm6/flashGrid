@@ -4,9 +4,9 @@ import "./styles.css";
 function Jumbotron() {
   return (<div>
     <div className="jumbotron b">
-      <h1> Welcome to</h1>
-      <img src="flashgrid.png"></img>
-      <h4>where projects are made in a flash</h4>
+      <h1> welcome to</h1>
+      <img id="image1" src="flashgrid.png"></img>
+      <h3>where projects are made in a flash</h3>
     </div>
   </div>
   
