@@ -11,3 +11,10 @@
     margin-top: -95px
 }
 
+
+#back {
+    background-image: url("./digital-marketing-meeting.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: top left;
+  }

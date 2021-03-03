@@ -6,25 +6,30 @@ import { Row, Col } from "react-bootstrap";
 
 
 
+
 function HelloFlashGrid() {
 
-    
+
     return (
-        <div className="container-fluid space-out">
-
-<Row>
-                <Col lg={8} md={12}>
-                    <Jumbotron />
-                </Col>
-
-                <Col lg={4} md={12} id='sidebar'>
-                <Sidebar/>
-
-                </Col>
-            </Row>
+        <body>
 
 
-        </div>
+            <div id="back" className="container-fluid space-out">
+
+                <div className="row">
+
+                    <div className="col-sm-8">
+                        <Jumbotron />
+                    </div>
+
+                    <div className="col-sm-4" id='sidebar'>
+                        <Sidebar />
+                    </div>
+
+                </div>
+            </div>
+
+        </body>
     );
 }
 

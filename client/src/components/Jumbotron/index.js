@@ -8,7 +8,6 @@ function Jumbotron() {
       <img src="flashgrid.png"></img>
       <h4>where projects are made in a flash</h4>
     </div>
-<img src="digital-marketing-meeting.jpg"></img>
   </div>
   
 
