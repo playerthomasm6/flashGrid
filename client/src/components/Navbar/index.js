@@ -67,22 +67,22 @@ function Nav() {
                 <a href="/"><img src="flashgrid-logo-white.png" id='logo' alt="flash grid logo in white"></img></a>
                 <div className='navcol'>
                     <a className="navbar-brand" href="/">
-                        HOME
+                        Home
                     </a>
                 </div>
                 <div className='navcol'>
                     <a className="navbar-brand" href="/about">
-                        ABOUT
+                        About
                     </a>
                 </div>
                 <div className='navcol'>
                     <a className="navbar-brand" href="/projects">
-                        MY PROJECTS
+                        My Projects
                     </a>
                 </div>
                 <div className='navcol'>
                     <a className="navbar-brand" href="/register">
-                        SIGN UP
+                        Sign Up
                     </a>
                 </div>
 

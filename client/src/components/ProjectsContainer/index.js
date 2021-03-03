@@ -387,7 +387,7 @@ function ProjectsContainer(props) {
           <table class="table striped bordered hover">
               <thead>
                 <tr>
-                  <th scope="col"><h3 className="align-center">projects</h3></th>
+                  <th scope="col"><h4 className="align-center">Projects</h4></th>
                 </tr>
               </thead>
               <tbody>
@@ -419,11 +419,11 @@ function ProjectsContainer(props) {
             <table class="table striped bordered hover">
               <thead>
                 <tr>
-                  <th scope="col"><h4 className="align-center">task name</h4></th>
-                  <th scope="col"><h4 className="align-center">description</h4></th>
-                  <th scope="col"><h4 className="align-center">assigned personel</h4></th>
-                  <th scope="col"><h4 className="align-center">due date</h4></th>
-                  <th scope="col"><h4 className="align-center">manage</h4></th>
+                  <th scope="col"><h4 className="align-center">Task Name</h4></th>
+                  <th scope="col"><h4 className="align-center">Description</h4></th>
+                  <th scope="col"><h4 className="align-center">Assigned Personel</h4></th>
+                  <th scope="col"><h4 className="align-center">Due Date</h4></th>
+                  <th scope="col"><h4 className="align-center">Manage</h4></th>
                 </tr>
               </thead>
               <tbody>
