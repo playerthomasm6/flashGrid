@@ -22,6 +22,8 @@
 .align-center {
     text-align: center;
     align-content: center;
+    color: white;
+    font-family: 'Carrois Gothic SC', sans-serif;
 }
 
 

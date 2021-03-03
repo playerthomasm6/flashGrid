@@ -1,12 +1,12 @@
 import React from "react";
-// import "./styles.css";
+import "./style.css";
 
 function ProjectForm (props) {
 
    return(
             <form>
                 <div className="form-group">
-                    <label htmlFor="project-name">Project Name</label>
+                    <label className="form-name" htmlFor="project-name">Project Name</label>
                     <input type="text" className="form-control" id="project-name" name="projectName" placeholder="Project Name..."
                     value={props.projectForm.projectName}
                     onChange={(e) => props.handleProjectFormInput(e)}
@@ -14,7 +14,7 @@ function ProjectForm (props) {
                         
                 </div>
                     <div className="form-group">
-                        <label htmlFor="project-description">Describe the Project</label>
+                        <label className="form-name" htmlFor="project-description">Describe the Project</label>
                         <input type="text" className="form-control" id="project-description" name="projectDescription" placeholder="Description..."
                         value={props.projectForm.projectDescription}
                         onChange={(e) => props.handleProjectFormInput(e)}
