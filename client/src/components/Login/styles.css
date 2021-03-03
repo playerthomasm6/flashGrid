@@ -1,0 +1,67 @@
+.input {
+    background-color: #004E89!important;
+    outline: none;
+    border: 1px solid rgb(182, 182, 201);
+    padding-right: 10px;
+    color: white;
+    border-radius: 10px;
+    transition: 0.5s;  
+    width: 100%;
+}
+
+.input:-webkit-autofill  {
+    -webkit-box-shadow: 0 0 0px 1000px#004E89 inset!important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+.input::placeholder {
+    color: white;
+}
+
+/* .input:active {
+    background-color: #004E89!important;
+    box-shadow: 0 0 14px 12px rgb(255, 0, 0)!important;
+} */
+
+@media (min-width: 1200px){
+    .input {
+        width: 275px;
+    }
+}
+
+
+#signInBtn {
+    height: 50px;
+}
+
+#signin {
+    border-radius: 10px;
+    background-color: #004E89;
+    padding-left: 75px;
+    padding-bottom: 10px;
+    padding-top: 18px;
+    padding-right: 65px;
+    transition: 0.5s;  
+    box-shadow: 0px 0px 8px 2px rgba(112,112,112,0.91)
+}
+
+#signin:hover {
+    box-shadow: 0px 0px 10px 5px rgba(112,112,112,0.91)
+}
+
+#signIn-text {
+    color: white;
+    margin-right: 81px;
+}
+
+.sign-or-pass {
+    color: white;
+}
+
+.noAccBtn:hover {
+    font-weight: 400px!important;
+}
+
+#dontMessage {
+    margin-right: 28px;
+}

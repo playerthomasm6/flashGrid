@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./style.css";
 import Column from "../Column";
 import API from "../../utils/API";
@@ -8,6 +8,7 @@ import ModalForm from "../Modal";
 import RenderForm from "../RenderForm";
 import TaskFormButton from "../TaskFormButton";
 import ProjectForm from "../ProjectForm";
+import {UserContext} from '../../providers/UserProvider'
 
 
 function ProjectsContainer(props) {
@@ -23,7 +24,10 @@ function ProjectsContainer(props) {
   const [projectForm, setProjectForm] = useState({}) // USE TO COLLECT PROJECT FORM INPUT VALUES
   const [active, setActive] = useState(false) //USE FOR SETTING ACTIVE CLASS
 
-  const signedInUser = localStorage.getItem('signedInUser')
+  const userPerson = useContext(UserContext)
+
+  const signedInUser = userPerson ? userPerson.email : "billy"
+
 
   useEffect(() => {
 
@@ -281,6 +285,7 @@ function ProjectsContainer(props) {
 
   const [show, setShow] = useState(false);
   const [editData, setEditData] = useState({});
+  
   const handleClose = () => setShow(false);
   const handleEditBtn = eData => {
     setShow(true);
@@ -339,6 +344,24 @@ function ProjectsContainer(props) {
     }
   }
 
+ function editDataSave(){
+     console.log("worked edit") 
+     console.log(editData)
+    
+
+     }
+
+// 
+  function editChangeData(event){
+    const newTarget = event.target.name
+    const newValue = event.target.value
+      console.log(event.target.name)
+      console.log(event.target.value)
+      
+      const data= {...editData, [`${newTarget}`]:newValue}
+      setEditData(data)
+      console.log(editData)
+     }
 
 
 
@@ -347,9 +370,9 @@ function ProjectsContainer(props) {
 // ===================================================================================================
   return ( 
     <>
-      <ModalForm show={show} handleClose={handleClose} editData={editData} />
+      <ModalForm show={show} handleClose={handleClose} editData={editData} editDataSave={editDataSave} editChangeData={editChangeData} />
       <div className="container-fluid space-out">
-        <h6>Current User: {user.userName}</h6>
+        <h6>Current User: {signedInUser}</h6>
         {/* <button onClick={() => createNewProject()}>Create Project</button> */}
 
         <div className="row">
@@ -372,7 +395,9 @@ function ProjectsContainer(props) {
                 value={item}
                 // name={item.userName}
                 onClick={event => {findProject(event, item)}}
-              > <h5 className="align-center">{item}</h5>
+              > <h5 
+              id={item}
+              className="align-center">{item}</h5>
                 
               </td>
               
