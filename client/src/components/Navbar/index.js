@@ -72,7 +72,7 @@ function Nav() {
                 </div>
                 <div className='navcol'>
                     <a className="navbar-brand" href="/about">
-                        About
+                        ABOUT
                     </a>
                 </div>
                 <div className='navcol'>
