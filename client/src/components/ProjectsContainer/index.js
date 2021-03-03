@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./style.css";
 import Column from "../Column";
 import API from "../../utils/API";
@@ -8,6 +8,7 @@ import ModalForm from "../Modal";
 import RenderForm from "../RenderForm";
 import TaskFormButton from "../TaskFormButton";
 import ProjectForm from "../ProjectForm";
+import {UserContext} from '../../providers/UserProvider'
 
 
 function ProjectsContainer(props) {
@@ -23,7 +24,9 @@ function ProjectsContainer(props) {
   const [projectForm, setProjectForm] = useState({}) // USE TO COLLECT PROJECT FORM INPUT VALUES
   const [active, setActive] = useState(false) //USE FOR SETTING ACTIVE CLASS
 
-  const signedInUser = localStorage.getItem('signedInUser')
+  const userPerson = useContext(UserContext)
+
+  const signedInUser = userPerson ? userPerson.email : "billy"
 
 
   useEffect(() => {
@@ -376,7 +379,7 @@ function ProjectsContainer(props) {
     <>
       <ModalForm show={show} handleClose={handleClose} editData={editData} editDataSave={editDataSave} editChangeData={editChangeData} />
       <div className="container-fluid space-out">
-        <h6>Current User: {user.userName}</h6>
+        <h6>Current User: {signedInUser}</h6>
         {/* <button onClick={() => createNewProject()}>Create Project</button> */}
 
         <div className="row">

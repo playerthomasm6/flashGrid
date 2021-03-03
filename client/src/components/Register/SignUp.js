@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { auth, generateUserDocument } from "../../utils/firebase";
+import './styles.css'
+import { Col, Row, Container } from 'react-bootstrap'
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -37,45 +39,51 @@ const SignUp = () => {
   };
 
   return (
-    <div className="mt-8">
-      <h1 className="text-3xl mb-2 text-center font-bold">Sign Up</h1>
-      <div className="border border-blue-400 mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8">
+    <div className='outer'>
+    <Container className='signup-cont'>
+      <Row>
+        <Col md={3}></Col>
+        <Col md={6}>
+          <div className='spacer'></div>
+    {/* // <div className="mt-8"> */}
+      <h1 className="text-3xl mb-2 text-center font-bold" id='signup-title'>Sign Up</h1>
+      {/* <div className="border border-blue-400 mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8"> */}
         {error !== null && (
           <div className="py-4 bg-red-600 w-full text-white text-center mb-3">
             {error}
           </div>
         )}
-        <form className="">
-          <label htmlFor="displayName" className="block">
+        <form className="signup-form">
+          {/* <label htmlFor="displayName" className="block">
             Display Name:
-          </label>
+          </label> */}
           <input
             type="text"
-            className="my-1 p-1 w-full "
+            className="my-1 p-1 w-full input"
             name="displayName"
             value={displayName}
-            placeholder="E.g: Faruq"
+            placeholder="display name"
             id="displayName"
             onChange={event => onChangeHandler(event)}
           />
-          <label htmlFor="userEmail" className="block">
+          {/* <label htmlFor="userEmail" className="block">
             Email:
-          </label>
+          </label> */}
           <input
             type="email"
-            className="my-1 p-1 w-full"
+            className="my-1 p-1 w-full input"
             name="userEmail"
             value={email}
-            placeholder="E.g: faruq123@gmail.com"
+            placeholder="email address"
             id="userEmail"
             onChange={event => onChangeHandler(event)}
           />
-          <label htmlFor="userPassword" className="block">
+          {/* <label htmlFor="userPassword" className="block">
             Password:
-          </label>
+          </label> */}
           <input
             type="password"
-            className="mt-1 mb-3 p-1 w-full"
+            className="mt-1 mb-3 p-1 w-full input"
             name="userPassword"
             value={password}
             placeholder="Your Password"
@@ -83,6 +91,8 @@ const SignUp = () => {
             onChange={event => onChangeHandler(event)}
           />
           <button
+          id='registerSubmit'
+          type='submit'
             className="bg-green-400 hover:bg-green-500 w-full py-2 text-white"
             onClick={event => {
               createUserWithEmailAndPasswordHandler(event, email, password);
@@ -91,13 +101,18 @@ const SignUp = () => {
             Sign up
           </button>
         </form>
-        <p className="text-center my-3">
+        <p className="text-center my-3 bottom-stuff">
           Already have an account?{" "}
-          <Link to="/login" className="text-blue-500 hover:text-blue-600">
+          <Link to="/login" className="text-blue-500 hover:text-blue-600 bottom-stuff link">
             Sign in here
           </Link>{" "}
         </p>
-      </div>
+      {/* // </div> */}
+    {/* // </div> */}
+    </Col>
+    <Col md={3}></Col>
+    </Row>
+    </Container>
     </div>
   );
 };
