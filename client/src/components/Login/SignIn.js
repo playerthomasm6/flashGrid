@@ -11,15 +11,20 @@ const SignIn = () => {
     const [error, setError] = useState(null);
     const history = useHistory()
 
-    useEffect(() => {
-      console.log(`user is signed in as ${email}`);
-      localStorage.setItem('signedInUser', email);
-    }, [email]);
+    // useEffect(() => {
+    //   console.log(`user is signed in as ${email}`);
+    //   localStorage.setItem('signedInUser', email);
+    // }, [email]);
     
     const signInWithEmailAndPasswordHandler = 
             (event,email, password) => {
                 event.preventDefault();
-                auth.signInWithEmailAndPassword(email, password).then(() => history.push('/projects')).catch(error => {
+                auth.signInWithEmailAndPassword(email, password).then(() => history.push('/projects'))
+                .then(() => {
+                  console.log(`User ${email} is signed in`);
+                  localStorage.setItem('signedInUser', email);
+                })
+                .catch(error => {
                   setError("Error signing in with password and email!");
                   console.error("Error signing in with password and email", error);
                 });
