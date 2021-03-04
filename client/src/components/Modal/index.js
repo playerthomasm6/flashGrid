@@ -51,7 +51,7 @@ function ModalForm(props) {
                 Task Duedate:
               </Form.Label>
               <Col sm="10">
-                <Form.Control onChange={props.editChangeData} defaultValue={editData.taskDueDate} name = "taskDuedate"/>
+                <Form.Control onChange={props.editChangeData} defaultValue={editData.taskDueDate} name = "taskDueDate"/>
               </Col>
             </Form.Group>
           </Form>
