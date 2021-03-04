@@ -76,7 +76,7 @@ function Nav() {
                     </Link>
                 </div>
                 <div className='col navcol'>
-                    <Link className="navbar-brand" onTouchCancel="/register">
+                    <Link className="navbar-brand" to="/register">
                         <div className="font-resize">Sign Up</div>
                     </Link>
                 </div>
