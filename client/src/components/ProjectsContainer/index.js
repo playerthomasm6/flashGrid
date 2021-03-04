@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useContext } from "react";
 import "./style.css";
 import Column from "../Column";
@@ -255,11 +253,10 @@ function editDataSave(){
     })
  }
 
-// This function sets new data to the state. 
+// 
   function editChangeData(event){
     const newTarget = event.target.name
     const newValue = event.target.value
-     
       console.log(event.target.name)
       console.log(event.target.value)
       
