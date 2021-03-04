@@ -19,7 +19,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;
-    /* margin-right: 40px; */
+    margin-left: 65px;
     /* padding-top: 30px; */
     /* height: 600px;
     width: 420px; */
@@ -34,7 +34,12 @@
 
 #close {
     position: absolute;
-    left: 40px;
+    left: 95px;
     font-size: 30px;
     cursor: pointer;
+}
+
+h6{
+    margin-left: 170px;
+    color: white;
 }
