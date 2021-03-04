@@ -26,8 +26,7 @@ function ProjectsContainer(props) {
 
   const userPerson = useContext(UserContext)
 
-  const signedInUser = userPerson ? userPerson.email : "billy"
-
+  const signedInUser = localStorage.getItem('signedInUser');
 
   useEffect(() => {
 
@@ -58,8 +57,8 @@ function ProjectsContainer(props) {
   };
 
   const filterProjectsUserName = () => {
-    console.log(user.userName)
-    const filteredUserProjects = userProjects.filter(project => user.userName === project.userName)
+    console.log(signedInUser)
+    const filteredUserProjects = userProjects.filter(project => signedInUser === project.userName)
     setProjects(filteredUserProjects)
   }
 
@@ -71,112 +70,6 @@ function ProjectsContainer(props) {
     setCurrentProject(foundProject)
 
   }
-
-  
-
-  const data = [
-    {
-      userName: "playerthomasm6@gmail.com",
-      projectName: "Flash Grid",
-      projectDescription:
-        "Flash Grid is a project management web app to help organize tasks and personel",
-      taskName: "Assign tasks",
-      taskDescription: "Assign tasks to each team member",
-      taskAssigne: "Thomas",
-      taskDueDate: "02/11/2021",
-      taskComplete: false
-    },
-    {
-      userName: "playerthomasm6@gmail.com",
-      projectName: "Flash Grid",
-      projectDescription:
-        "Flash Grid is a project management web app to help organize tasks and personel",
-      taskName: "Create project page",
-      taskDescription: "write code to render information on the project page",
-      taskAssigne: "Thomas",
-      taskDueDate: "02/28/2021",
-      taskComplete: false
-    },
-    {
-      userName: "playerthomasm6@gmail.com",
-      projectName: "Flash Grid",
-      projectDescription:
-        "Flash Grid is a project management web app to help organize tasks and personel",
-      taskName: "Project Page CSS",
-      taskDescription: "Utilize CSS to format the project page",
-      taskAssigne: "John",
-      taskDueDate: "02/28/2021",
-      taskComplete: false
-    },
-    {
-      userName: "playerthomasm6@gmail.com",
-      projectName: "Flash Grid",
-      projectDescription:
-        "Flash Grid is a project management web app to help organize tasks and personel",
-      taskName: "Assign tasks",
-      taskDescription: "Assign tasks to each team member",
-      taskAssigne: "Thomas",
-      taskDueDate: "02/11/2021",
-      taskComplete: false
-    },
-    {
-      userName: "mathewHarris@gmail.com",
-      projectName: "Radical Gamez",
-      projectDescription:
-        "Flash Grid is a project management web app to help organize tasks and personel",
-      taskName: "Assign tasks",
-      taskDescription: "Assign tasks to each team member",
-      taskAssigne: "Thomas",
-      taskDueDate: "02/11/2021",
-      taskComplete: false
-    },
-    {
-      userName: "playerthomasm6@gmail.com",
-      projectName: "Tipster",
-      projectDescription:
-        "Flash Grid is a project management web app to help organize tasks and personel",
-      taskName: "Assign tasks",
-      taskDescription: "Assign tasks to each team member",
-      taskAssigne: "Thomas",
-      taskDueDate: "02/11/2021",
-      taskComplete: false
-    },
-    {
-      userName: "playerthomasm6@gmail.com",
-      projectName: "Tipster",
-      projectDescription:
-        "Flash Grid is a project management web app to help organize tasks and personel",
-      taskName: "Assign tasks",
-      taskDescription: "Assign tasks to each team member",
-      taskAssigne: "Thomas",
-      taskDueDate: "02/11/2021",
-      taskComplete: false
-    },
-    {
-      userName: "playerthomasm6@gmail.com",
-      projectName: "Other Project",
-      projectDescription:
-        "Flash Grid is a project management web app to help organize tasks and personel",
-      taskName: "Assign tasks",
-      taskDescription: "Assign tasks to each team member",
-      taskAssigne: "Thomas",
-      taskDueDate: "02/11/2021",
-      taskComplete: false
-    },
-    {
-      userName: "playerthomasm6@gmail.com",
-      projectName: "Final Project",
-      projectDescription:
-        "Flash Grid is a project management web app to help organize tasks and personel",
-      taskName: "Assign tasks",
-      taskDescription: "Assign tasks to each team member",
-      taskAssigne: "Thomas",
-      taskDueDate: "02/11/2021",
-      taskComplete: false
-    }
-  ];
-
-  
 
   // function handleInputChange(event) {
   //     const { name, value } = event.target;
@@ -251,7 +144,7 @@ function ProjectsContainer(props) {
     console.log("Project Created!!... unless it wasn't?  No?  Ok I will look into it");
     const newProject = {
       // userName: user.userName,
-      userName: user.userName,
+      userName: signedInUser,
       projectName: projectForm.projectName,
       projectDescription: projectForm.projectDescription,
       taskName: "Create tasks for your new project!",
@@ -389,7 +282,7 @@ function editDataSave(){
 
         <div className="row">
           <div className="col-sm-2">
-          <table className="table striped bordered hover">
+          <table className="table striped bordered table-hover">
               <thead>
                 <tr>
                   <th scope="col"><h4 className="align-center">Projects</h4></th>
@@ -422,14 +315,14 @@ function editDataSave(){
           </div>
 
           <div className="col-sm-10">
-            <table className="table striped bordered hover">
+            <table className="table striped bordered table-hover">
               <thead>
                 <tr>
-                  <th scope="col"><h4 className="align-center">Task Name</h4></th>
-                  <th scope="col"><h4 className="align-center">Description</h4></th>
-                  <th scope="col"><h4 className="align-center">Assigned Personel</h4></th>
-                  <th scope="col"><h4 className="align-center">Due Date</h4></th>
-                  <th scope="col"><h4 className="align-center">Manage</h4></th>
+                  <th scope="col"><h4 className="align-center font-adjust">Task Name</h4></th>
+                  <th scope="col"><h4 className="align-center font-adjust">Description</h4></th>
+                  <th scope="col"><h4 className="align-center font-adjust">Assigned Personel</h4></th>
+                  <th scope="col"><h4 className="align-center font-adjust">Due Date</h4></th>
+                  <th scope="col"><h4 className="align-center font-adjust">Manage</h4></th>
                 </tr>
               </thead>
               <tbody>
@@ -437,7 +330,7 @@ function editDataSave(){
                   <tr
                   key={item._id}
                   >
-                    <td
+                    <td 
                     key={"key" + item.taskName} 
                     id={item._id} 
                     name="taskName">
