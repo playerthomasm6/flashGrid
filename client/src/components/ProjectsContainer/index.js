@@ -342,12 +342,23 @@ function ProjectsContainer(props) {
     }
   }
 
- function editDataSave(){
-     console.log("worked edit") 
-     console.log(editData)
-    
 
-     }
+// this function runs when click Sav on modal
+function refreshPage() {
+  window.location.reload(false)
+}
+// this function runs when click Sav on modal
+function editDataSave(){
+   console.log("worked edit")
+   console.log(editData._id)
+   let id = editData._id
+  API.editTask(id, editData)
+  .then(res => {
+    console.log(res)
+    handleClose()
+    refreshPage()
+    })
+ }
 
 // 
   function editChangeData(event){
@@ -375,7 +386,7 @@ function ProjectsContainer(props) {
 
         <div className="row">
           <div className="col-sm-2">
-          <table class="table striped bordered hover">
+          <table className="table striped bordered hover">
               <thead>
                 <tr>
                   <th scope="col"><h4 className="align-center">Projects</h4></th>
@@ -386,10 +397,11 @@ function ProjectsContainer(props) {
             {
             
             projectNameList.map(item => (
-              <tr>
+              <tr
+              key={item + "1"}
+              >
               <td
                 className="pointer"
-                key={item + "1"}
                 value={item}
                 // name={item.userName}
                 onClick={event => {findProject(event, item)}}
@@ -407,7 +419,7 @@ function ProjectsContainer(props) {
           </div>
 
           <div className="col-sm-10">
-            <table class="table striped bordered hover">
+            <table className="table striped bordered hover">
               <thead>
                 <tr>
                   <th scope="col"><h4 className="align-center">Task Name</h4></th>
@@ -422,27 +434,36 @@ function ProjectsContainer(props) {
                   <tr
                   key={item._id}
                   >
-                    <td 
+                    <td
+                    key={"key" + item.taskName} 
                     id={item._id} 
                     name="taskName">
                       <h6 className="align-center">{item.taskName}</h6>
                       
                     </td>
 
-                    <td> 
+                    <td
+                    key={"key" + item.taskDescription}
+                    > 
                       <p className="align-center">
                       {item.taskDescription}
                       </p>
                     </td>
 
-                    <td><h6 className="align-center">{item.taskAssigne}</h6></td>
+                    <td
+                    key={"key" + item.taskAssigne}
+                    ><h6 className="align-center">{item.taskAssigne}</h6></td>
 
-                    <td>
+                    <td
+                    key={"key" + item.taskDueDate}
+                    >
                       <h6 className="align-center">{item.taskDueDate}</h6>{" "}
                       
                     </td>
 
-                    <td>
+                    <td
+                    key={"key buttons"}
+                    >
                       <div className="align-center">
                     <button onClick={() => handleEditBtn(item)}>Edit</button>
                     <button className="delete-button align-center" value={item._id} onClick={e => deleteThatTask(e.target.value)}>[X]</button>
