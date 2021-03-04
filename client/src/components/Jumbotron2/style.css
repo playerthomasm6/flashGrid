@@ -1,0 +1,20 @@
+.b {
+    margin: 3%;
+    text-align: center;
+    font-family: 'Carrois Gothic SC', sans-serif;
+    padding-bottom: 100px!important;
+    border-radius: 15px!important;
+    transition: 0.5s;  
+    box-shadow: 0px 0px 8px 2px rgba(112,112,112,0.91);
+    opacity: 0.85;
+    /* width: 800px; */
+}
+
+.b:hover {
+    box-shadow: 0px 0px 10px 5px rgba(112,112,112,0.91)
+}
+
+#image1{
+    max-width: 330px;
+    height: 108px;
+}

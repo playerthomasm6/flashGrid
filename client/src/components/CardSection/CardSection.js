@@ -8,12 +8,12 @@ const CardSection = () => {
         {
           Icon: <img src={image} alt='fg'></img>,
           Title: 'What is flashgrid',
-          Content: 'FlashGrid is an project managemnt tool that helps industries to manage the projects,tasks and team plannings.'
+          Content: 'FlashGrid is an project managemnt tool that helps industries to manage the projects, tasks and team plannings.'
         },
         {
           Icon: <img src={image} alt='fg'></img>,
-          Title: 'About Us',
-          Content: 'Our team is commited to do the work tranparently and having fun along the way we developed this application.'
+          Title: 'About the Team',
+          Content: 'Just a good group of guys that enjoy writing code together and planning projects in a flash. We all attended the Rutgers Coding Boot Camp together and look forward to see what our future holds as developers.'
         },
         {
             Icon: <img src={image} alt='fg'></img>,
