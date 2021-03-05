@@ -77,7 +77,7 @@ return (
             Sign up 
           </Link>{" "}
           <br />{" "}
-          <Link to = "passwordReset" className="sign-or-pass noAccBtn">
+          <Link to="passwordReset" className="sign-or-pass noAccBtn">
             Forgot Password?
           </Link>
         </p>
