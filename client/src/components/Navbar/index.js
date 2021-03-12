@@ -6,84 +6,79 @@ import  {signOut } from "../../utils/firebase"
 
 function Nav() {
 
-    // const [signedInUser, setSignedInUser] = useState(!!localStorage.getItem('signedInUser'));
-    const user = useContext(UserContext)
+    const signedInUser = localStorage.getItem('signedInUser');
+    // const user = useContext(UserContext)
+
+    
     
    
-    console.log(user)
+    console.log(signedInUser)
     // useEffect(() => {
     //     getUser()
     // }, [signedInUser]);
 
 
     function getUser () {
-        if (user != null) {
+        if (signedInUser != null) {
             return(
                 <>
-                <div className="col">
-                    <a className="navbar-brand" href="/projects">
-                    {user.email}
-                    </a>
+                
+
+                <div className="col navcol"
+                    onClick={() => {signOut(); localStorage.clear()}}>
+
+                    <Link
+                        onClick={() => {alert("you logged out"); signOut();}}                   
+                        className="navbar-brand" to="/">Log Out
+                    </Link> 
                 </div>
 
-                <div className="col">
-                <div 
-                onClick={() => {
-                    signOut();
-                    // setSignedInUser()
-                    // getUser()
-                }}
-                className="navbar-brand" href="/projects">
-                    <Link
-                    onClick={() => {alert("you logged out")
-                signOut();
-                }}
-                    
-                    className="navbar-brand" to="/">
-                    Log Out
+                <div className="col navcol">
+                    <Link className="navbar-brand" to="/projects">
+                    <p>{signedInUser}</p>
                     </Link>
-                    
-                    
+                </div>
                 
-                    
-                </div>
-                </div>
             </>
             )
         } else {
             return(
-                <div className="col">
-                <a className="navbar-brand" href="/login">
-                    Log In
-                </a>
-            </div>
+                <div className="col navcol">
+                <Link className="navbar-brand" to="/login">
+                    <div>Log In</div>
+                </Link>
+                </div>
             )
         }
     }
    
     return (
         <nav className="navbar navbar-expand-lg navbar-dark nav-color">
-            <div className="container">
-                <a href="/"><img src="flashgrid-logo-white.png" id='logo' alt="flash grid logo in white"></img></a>
-                <div className='navcol'>
-                    <a className="navbar-brand" href="/">
-                        Home
-                    </a>
+            <div className="container-fluid">
+            <div className='navcol'>
+            <a href="/"><img src="flashgrid-logo-white.png" id='logo' alt="flash grid logo in white"></img></a>
                 </div>
-                <div className='navcol'>
-                    <a className="navbar-brand" href="/about">
-                        About
-                    </a>
+                
+                
+                <div className='col navcol'>
+                    <Link className="navbar-brand" to="/">
+                        <div className="font-resize">Home</div>
+                    </Link>
                 </div>
-                <div className='navcol'>
-                    <a className="navbar-brand" href="/projects">
-                        My Projects
-                    </a>
+                <div className='col navcol'>
+                    <Link className="navbar-brand" to="/about">
+                        <div className="font-resize">About</div>
+                    </Link>
                 </div>
-                <div className='navcol'>
-                    <a className="navbar-brand" href="/register">
-                        Sign Up
-                    </a>
+                <div className='col navcol'>
+                    <Link className="navbar-brand" to="/projects">
+                        <div className="font-resize">My Projects</div>
+                    </Link>
+                </div>
+                <div className='col navcol'>
+                    <Link className="navbar-brand" to="/register">
+                        <div className="font-resize">Sign Up</div>
+                    </Link>
                 </div>
 
                 
