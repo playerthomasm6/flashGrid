@@ -22,7 +22,7 @@ this is a web app go to the link here https://fathomless-crag-63072.herokuapp.co
  ## Credits
  | Name           | GITHUB            |
  |----------------|-------------------|
- | Hisham Kader   | Add Link Here     |
+ | Hisham Kader   | https://github.com/HishamKader|
  |    John Rogers |   add Link here   |
  | Mathew Harris  |   add Link here   |
  |Thomas M. Player| http://github.com/playerthomasm6|
